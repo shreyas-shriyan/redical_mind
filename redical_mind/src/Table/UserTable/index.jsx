@@ -25,7 +25,7 @@ const {
 const headData = [
   {
     id: "srNo",
-    label: "srNo",
+    label: "Sr.No",
     minWidth: 50,
     width: 50,
     maxWidth: 50,

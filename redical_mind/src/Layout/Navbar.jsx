@@ -1,15 +1,26 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Button, IconButton } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  TextField,
+  Stack,
+  Avatar,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import theme from "../utils/theme";
+
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Navbar = ({ onMenuClick, drawerWidth }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    navigate("/login");
+    // localStorage.removeItem("authToken");
+    // navigate("/login");
   };
 
   return (
@@ -19,7 +30,7 @@ const Navbar = ({ onMenuClick, drawerWidth }) => {
         zIndex: (theme) => theme.zIndex.drawer + 1,
         width: { sm: `calc(100% - ${drawerWidth}px)` },
         backgroundColor: theme.palette.primary.white,
-        boxShadow: "none",
+        // boxShadow: "none",
         color: theme.palette.primary.sidebar,
       }}
     >
@@ -37,11 +48,29 @@ const Navbar = ({ onMenuClick, drawerWidth }) => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-          RMT Engg
+
+        <Typography sx={{ flexGrow: 1, ml: "17vw" }}>
+          <TextField
+            fullWidth
+            // label="fullWidth"
+            size="small"
+            placeholder="Search"
+            // id="fullWidth"
+            sx={{ width: "40vw" }}
+          />
         </Typography>
-        <Button color="inherit" onClick={handleLogout}>
-          Logout
+        <Stack
+          direction="row"
+          sx={{ display: "flex", alignItems: "center", gap: "10px" }}
+        >
+          <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
+            Hi, Jayesh
+          </Typography>
+          <Avatar alt="Remy Sharp" src="../../public/image.png" />
+        </Stack>
+
+        <Button sx={{ ml: 2 }} color="inherit" onClick={handleLogout}>
+          <LogoutIcon />
         </Button>
       </Toolbar>
     </AppBar>

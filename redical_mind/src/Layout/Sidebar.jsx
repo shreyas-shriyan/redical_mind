@@ -10,7 +10,8 @@ const Sidebar = ({ open, onClose, drawerWidth }) => {
   const location = useLocation();
 
   const sidebarRoute = [
-    { name: "Home", path: "/" },
+    { name: "Home", path: "/qms/sentiment-analysis" },
+    // { name: "Home", path: "" },
     { name: "Dashboard", path: "/dashboard" },
     { name: "Summary", path: "/summary" },
     { name: "Root Cause Analysis", path: "/rootCauseAnalysis" },

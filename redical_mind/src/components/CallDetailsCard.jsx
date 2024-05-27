@@ -23,7 +23,7 @@ const CallDetailsCard = ({ data }) => {
       }}
     >
       <p> {data?.name}</p>
-      <p style={{ marginTop: "-5px", fontSize: "18px", color: "#4285F4" }}>
+      <p style={{ marginTop: "-9px", fontSize: "18px", color: "#4285F4" }}>
         {data?.value}
       </p>
     </Card>

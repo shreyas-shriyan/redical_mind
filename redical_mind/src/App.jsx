@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 
@@ -17,6 +17,9 @@ function App() {
         <Routes>
           <Route path="/" element={<PublicRoute restricted={false} />}>
             <Route path="/" element={<Home />} />
+          </Route>
+          <Route path="/" element={<PublicRoute restricted={false} />}>
+            <Route path="/qms/sentiment-analysis" element={<Home />} />
           </Route>
           <Route path="/summary" element={<PublicRoute restricted={false} />}>
             <Route path="/summary" element={<Summary />} />
