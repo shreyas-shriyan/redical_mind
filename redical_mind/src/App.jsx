@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import theme from "./utils/theme";
 import Dashboard from "./pages/Dashboard";
 import Summary from "./pages/Summary";
+import Overview from "./pages/Overview";
 
 function App() {
   return (
@@ -21,11 +22,17 @@ function App() {
           <Route path="/" element={<PublicRoute restricted={false} />}>
             <Route path="/qms/sentiment-analysis" element={<Home />} />
           </Route>
-          <Route path="/summary" element={<PublicRoute restricted={false} />}>
-            <Route path="/summary" element={<Summary />} />
+          <Route
+            path="/qms/executive-overview"
+            element={<PublicRoute restricted={false} />}
+          >
+            <Route path="/qms/executive-overview" element={<Overview />} />
           </Route>
-          <Route path="/dashboard" element={<PublicRoute restricted={false} />}>
-            <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/FTE-required"
+            element={<PublicRoute restricted={false} />}
+          >
+            <Route path="/FTE-required" element={<Dashboard />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />

@@ -27,10 +27,12 @@ const Navbar = ({ onMenuClick, drawerWidth }) => {
     <AppBar
       position="fixed"
       sx={{
-        zIndex: (theme) => theme.zIndex.drawer + 1,
+        // zIndex: (theme) => theme.zIndex.drawer - 1,
+        zIndex: 900,
         width: { sm: `calc(100% - ${drawerWidth}px)` },
         backgroundColor: theme.palette.primary.white,
         // boxShadow: "none",
+        boxShadow: "rgba(0, 0, 0, 0.24) 2px 1px 5px",
         color: theme.palette.primary.sidebar,
       }}
     >
@@ -49,7 +51,7 @@ const Navbar = ({ onMenuClick, drawerWidth }) => {
           <MenuIcon />
         </IconButton>
 
-        <Typography sx={{ flexGrow: 1, ml: "17vw" }}>
+        <Typography sx={{ flexGrow: 1, ml: "15vw", mr: 3 }}>
           <TextField
             fullWidth
             // label="fullWidth"
@@ -66,7 +68,11 @@ const Navbar = ({ onMenuClick, drawerWidth }) => {
           <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
             Hi, Jayesh
           </Typography>
-          <Avatar alt="Remy Sharp" src="../../public/image.png" />
+          <Avatar
+            alt="Remy Sharp"
+            src="../../public/image.png"
+            sx={{ width: 35, height: 35 }}
+          />
         </Stack>
 
         <Button sx={{ ml: 2 }} color="inherit" onClick={handleLogout}>

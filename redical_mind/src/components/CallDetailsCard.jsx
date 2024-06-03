@@ -8,6 +8,7 @@ const CallDetailsCard = ({ data }) => {
   return (
     <Card
       sx={{
+        ...theme.card,
         borderRadius: "20px",
         padding: "4px 10px",
         display: "flex",
@@ -17,7 +18,8 @@ const CallDetailsCard = ({ data }) => {
         fontSize: "13.5px",
         fontWeight: "500",
         height: "80px",
-        width: "180px",
+        width: "100%",
+        minWidth: "150px",
         fontWeight: "600",
         color: theme.palette.primary.sidebar,
       }}

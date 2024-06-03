@@ -110,14 +110,20 @@ const RiskEvaluationTable = ({ classes }) => {
     } else if (value > -0.5 && value <= 0) {
       return "#FFA500";
     } else if (value > 0 && value <= 0.4) {
-      return "#FFBF00";
+      return "pink";
     } else {
       return "#008000";
     }
   };
 
   return (
-    <Card className={classes.root} sx={theme.tableBorder}>
+    <Card
+      className={classes.root}
+      sx={{ ...theme.card }}
+      md={12}
+      xs={12}
+      lg={12}
+    >
       <Typography
         sx={{
           textAlign: "left",
@@ -126,13 +132,17 @@ const RiskEvaluationTable = ({ classes }) => {
           p: 1,
           fontWeight: "bold",
           borderRadius: "10px",
-          //   borderTopLeftRadius: "10px",
-          //   borderTopRightRadius: "10px",
         }}
       >
         Call Records
       </Typography>
-      <TableContainer className={classes.container}>
+      <TableContainer
+        md={12}
+        xs={12}
+        lg={12}
+        className={classes.container}
+        aria-label="simple table"
+      >
         <Table stickyHeader aria-label="sticky table">
           <TableHead className={classes.head}>
             <TableRow>
@@ -151,7 +161,7 @@ const RiskEvaluationTable = ({ classes }) => {
                 ))}
             </TableRow>
 
-            <TableRow>
+            <TableRow className={classes.head}>
               {columns &&
                 columns.map((column, index) => (
                   <StyledTableCell
@@ -224,14 +234,14 @@ const RiskEvaluationTable = ({ classes }) => {
                         if (column.id === "agentSentimentScore") {
                           return (
                             <StyledTableCell align="center" key={column.id}>
-                              {row?.Agent?.SentimentScore?.[0]}
+                              {row?.Agent?.SentimentScore?.[0]?.toFixed(2)}
                             </StyledTableCell>
                           );
                         }
                         if (column.id === "agentSubjectivity") {
                           return (
                             <StyledTableCell align="center" key={column.id}>
-                              {row?.Agent?.Subjectivity?.[0]}
+                              {row?.Agent?.Subjectivity?.[0]?.toFixed(2)}
                             </StyledTableCell>
                           );
                         }
@@ -260,14 +270,14 @@ const RiskEvaluationTable = ({ classes }) => {
                         if (column.id === "customerSentimentScore") {
                           return (
                             <StyledTableCell align="center" key={column.id}>
-                              {row?.Customer?.SentimentScore?.[0]}
+                              {row?.Customer?.SentimentScore?.[0]?.toFixed(2)}
                             </StyledTableCell>
                           );
                         }
                         if (column.id === "customerSubjectivity") {
                           return (
                             <StyledTableCell align="center" key={column.id}>
-                              {row?.Customer?.Subjectivity?.[0]}
+                              {row?.Customer?.Subjectivity?.[0]?.toFixed(2)}
                             </StyledTableCell>
                           );
                         }

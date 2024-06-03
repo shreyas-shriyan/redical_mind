@@ -10,18 +10,16 @@ const Sidebar = ({ open, onClose, drawerWidth }) => {
   const location = useLocation();
 
   const sidebarRoute = [
-    { name: "Home", path: "/qms/sentiment-analysis" },
+    { name: "Root Cause Analysis", path: "/qms/sentiment-analysis" },
     // { name: "Home", path: "" },
-    { name: "Dashboard", path: "/dashboard" },
-    { name: "Summary", path: "/summary" },
-    { name: "Root Cause Analysis", path: "/rootCauseAnalysis" },
-    { name: "Sentiment Analysis", path: "/sentimentAnalysis" },
-    { name: "FTE Required", path: "/FTERequired" },
-    { name: "Call Volume", path: "/callVolume" },
-    { name: "Average Hold Time", path: "/averageHoldTime" },
-    { name: "Schedule Shrinkage", path: "/scheduleShrinkage" },
+    { name: "Executive Overview", path: "/qms/executive-overview" },
+    { name: "FTE Required", path: "/FTE-required" },
+    { name: "Call Volume", path: "/call-volume" },
+    { name: "Average Hold Time", path: "/average-hold-Time" },
+    { name: "Schedule Shrinkage", path: "/schedule-shrinkage" },
     { name: "Occupancy", path: "/occupancy" },
     { name: "Headcount", path: "/headcount" },
+    { name: "Planning View", path: "/planning-view" },
   ];
 
   const selectedObj = {
@@ -51,6 +49,7 @@ const Sidebar = ({ open, onClose, drawerWidth }) => {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
+            zIndex: 999,
             "& .MuiDrawer-paper": {
               width: drawerWidth,
               boxSizing: "border-box",
@@ -61,7 +60,7 @@ const Sidebar = ({ open, onClose, drawerWidth }) => {
         >
           <List>
             <ListItem component={Link} to="/">
-              <img src="../../public/logo.svg" alt="icon" />
+              <img src="../../public/logo.svg" alt="icon" width={180} />
             </ListItem>
             {sidebarRoute?.map((item, index) => {
               return (
