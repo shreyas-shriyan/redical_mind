@@ -12,6 +12,8 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import theme from "../utils/theme";
+import InputAdornment from "@mui/material/InputAdornment";
+import SearchIcon from "@mui/icons-material/SearchOutlined";
 
 import LogoutIcon from "@mui/icons-material/Logout";
 
@@ -54,11 +56,34 @@ const Navbar = ({ onMenuClick, drawerWidth }) => {
         <Typography sx={{ flexGrow: 1, ml: "15vw", mr: 3 }}>
           <TextField
             fullWidth
-            // label="fullWidth"
             size="small"
             placeholder="Search"
-            // id="fullWidth"
-            sx={{ width: "40vw" }}
+            sx={{
+              width: "35vw",
+              "& .MuiOutlinedInput-root": {
+                color: "#000",
+                backgroundColor: "#EBF4FF",
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "none",
+                  borderWidth: "1px solid #EBF4FF",
+                },
+              },
+              // Class for the label of the input field
+              "& .MuiInputLabel-outlined": {
+                color: "#2e2e2e",
+                fontWeight: "bold",
+              },
+            }}
+            InputProps={{
+              style: {
+                borderRadius: "25px",
+              },
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
           />
         </Typography>
         <Stack

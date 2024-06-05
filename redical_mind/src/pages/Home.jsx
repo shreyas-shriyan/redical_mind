@@ -8,7 +8,17 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { ResponsivePie } from "@nivo/pie";
 import theme from "../utils/theme";
 
-const { withStyles, Grid, Paper, Card, Typography } = Components;
+const {
+  withStyles,
+  Grid,
+  Paper,
+  Card,
+  Typography,
+  InputLabel,
+  FormControl,
+  Select,
+  MenuItem,
+} = Components;
 
 const sentimateData = [
   {
@@ -94,6 +104,70 @@ const sentimateDataByMonth = [
     color: "#FF5BAA",
   },
 ];
+const sentimateDataByQuater = [
+  {
+    id: "In Call",
+    label: "In Call",
+    value: 48,
+    color: "#344BFD",
+  },
+  {
+    id: "Ready",
+    label: "Ready",
+    value: 85,
+    color: "#F4A79D",
+  },
+  {
+    id: "On Pause",
+    label: "On Pause",
+    value: 16,
+    color: "#F68D2B",
+  },
+  {
+    id: "Dead Call",
+    label: "Dead Call",
+    value: 52,
+    color: "#009B83",
+  },
+  {
+    id: "Desposing",
+    label: "Desposing",
+    value: 44,
+    color: "#FF5BAA",
+  },
+];
+const sentimateDataByYear = [
+  {
+    id: "In Call",
+    label: "In Call",
+    value: 682,
+    color: "#344BFD",
+  },
+  {
+    id: "Ready",
+    label: "Ready",
+    value: 856,
+    color: "#F4A79D",
+  },
+  {
+    id: "On Pause",
+    label: "On Pause",
+    value: 188,
+    color: "#F68D2B",
+  },
+  {
+    id: "Dead Call",
+    label: "Dead Call",
+    value: 912,
+    color: "#009B83",
+  },
+  {
+    id: "Desposing",
+    label: "Desposing",
+    value: 150,
+    color: "#FF5BAA",
+  },
+];
 
 const Container = (props) => <Grid container {...props} />;
 const Item = (props) => <Grid item {...props} />;
@@ -116,6 +190,8 @@ const Home = ({ classes }) => {
   ];
 
   const [selectedFilter, setSelectedFilter] = useState("Sentiment");
+  const [selectedValue, setSelectedValue] = useState("Today");
+  const [graphData, setGraphData] = useState(sentimateData);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -128,18 +204,85 @@ const Home = ({ classes }) => {
   const handleFilter = (name) => {
     setSelectedFilter(name);
   };
+
+  const handleChange = (e) => {
+    setSelectedValue(e.target.value);
+    const name = e.target.value;
+    if (name === "Today") {
+      setGraphData(sentimateData);
+    } else if (name === "This Week") {
+      setGraphData(sentimateDataByWeek);
+    } else if (name === "This Month") {
+      setGraphData(sentimateDataByMonth);
+    } else if (name === "This Quarter") {
+      setGraphData(sentimateDataByQuater);
+    } else {
+      setGraphData(sentimateDataByYear);
+    }
+  };
+
   return (
     <Container md={12} xs={12} lg={12} className={classes.mainContainer}>
-      <Item sx={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-        {filterArray?.map((item, index) => {
-          return (
-            <FilterButton
-              name={item}
-              selectedFilter={selectedFilter}
-              handleFilter={handleFilter}
-            />
-          );
-        })}
+      <Item
+        md={12}
+        xs={12}
+        lg={12}
+        style={{
+          display: "flex",
+          gap: "10px",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <Item
+          sx={{
+            display: "flex",
+            gap: "10px",
+            flexWrap: "wrap",
+            alignItems: "center",
+          }}
+        >
+          {filterArray?.map((item, index) => {
+            return (
+              <FilterButton
+                name={item}
+                selectedFilter={selectedFilter}
+                handleFilter={handleFilter}
+              />
+            );
+          })}
+        </Item>
+        <Item>
+          <FormControl sx={{ width: "auto" }} size="small">
+            <InputLabel id="demo-simple-select-label">Span</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              MenuProps={{
+                sx: {
+                  "&& .Mui-selected": {
+                    color: "white",
+                    background: theme.palette.primary.sidebarSecondary,
+                  },
+                },
+              }}
+              sx={{
+                "& [aria-expanded=true]": {
+                  background: "#EBF4FF",
+                },
+              }}
+              value={selectedValue}
+              label="Span"
+              onChange={handleChange}
+            >
+              <MenuItem value="Today">Today</MenuItem>
+              <MenuItem value="This Week">This Week</MenuItem>
+              <MenuItem value="This Month">This Month</MenuItem>
+              <MenuItem value="This Quarter">This Quarter</MenuItem>
+              <MenuItem value="This Year">This Year</MenuItem>
+            </Select>
+          </FormControl>
+        </Item>
       </Item>
       <Item
         md={12}
@@ -180,13 +323,13 @@ const Home = ({ classes }) => {
               Sentiment Today
             </Typography>
             <Item>
-              <SentimateTodayGraph data={sentimateData} />
+              <SentimateTodayGraph data={graphData} />
             </Item>
           </Card>
         </Item>
         <Item md={5.8} lg={3.9} xs={12} mt={2}>
           <Card className={classes.card} sx={{ ...theme.card }}>
-            <Typography
+            {/* <Typography
               className={classes.cardText}
               sx={{ fontWeight: "600", fontSize: "14px" }}
             >
@@ -194,12 +337,12 @@ const Home = ({ classes }) => {
             </Typography>
             <Item>
               <SentimateTodayGraph data={sentimateDataByWeek} />
-            </Item>
+            </Item> */}
           </Card>
         </Item>
         <Item md={5.8} lg={3.9} xs={12} mt={2}>
           <Card className={classes.card} sx={{ ...theme.card }}>
-            <Typography
+            {/* <Typography
               className={classes.cardText}
               sx={{ fontWeight: "600", fontSize: "14px" }}
             >
@@ -207,7 +350,7 @@ const Home = ({ classes }) => {
             </Typography>
             <Item>
               <SentimateTodayGraph data={sentimateDataByMonth} />
-            </Item>
+            </Item> */}
           </Card>
         </Item>
       </Item>

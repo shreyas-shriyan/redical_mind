@@ -9,7 +9,7 @@ const head = [
   },
   {
     id: "audioFile",
-    label: "Audio File (s)",
+    label: "Call Duration (s)",
     minWidth: 100,
     width: 100,
     maxWidth: 100,

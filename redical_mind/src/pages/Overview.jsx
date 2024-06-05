@@ -3,11 +3,45 @@ import { Components } from "../utils/materialUI";
 import styles from "./styles";
 import ExecutiveContactCard from "../components/ExecutiveContactCard";
 import theme from "../utils/theme";
+import { ResponsivePie } from "@nivo/pie";
 
 const { withStyles, Grid, Card, Typography } = Components;
 
 const Container = (props) => <Grid container {...props} />;
 const Item = (props) => <Grid item {...props} />;
+
+const sentimateData = [
+  {
+    id: "Very Satisfied",
+    label: "Very Satisfied ",
+    value: 55,
+    color: "#0A3260",
+  },
+  {
+    id: "Neutral",
+    label: "Neutral",
+    value: 35,
+    color: "#0F5FBA",
+  },
+  {
+    id: "Very Unsatisfied",
+    label: "Very Unsatisfied",
+    value: 20,
+    color: "#3D82CF",
+  },
+  {
+    id: "Satisfied",
+    label: "Satisfied",
+    value: 5,
+    color: "#5E98DA",
+  },
+  {
+    id: "Satisfied",
+    label: "Satisfied",
+    value: 11,
+    color: "#A5CFFF",
+  },
+];
 
 const Overview = ({ classes }) => {
   const cardData = [
@@ -79,7 +113,9 @@ const Overview = ({ classes }) => {
   return (
     <Container md={12} xs={12} lg={12} className={classes.mainContainer}>
       <Item sx={{ display: "flex", gap: "10px" }}>
-        <Typography>Executive Contact Center Overview</Typography>
+        <Typography sx={{ fontWeight: "600", fontSize: "18px" }}>
+          Executive Contact Center Overview
+        </Typography>
       </Item>
       <Item
         spacing={2}
@@ -143,10 +179,115 @@ const Overview = ({ classes }) => {
       </Container>
       <Container spacing={2} sx={{ mt: 0, height: "320px" }}>
         <Item md={6} lg={6} xs={12}>
-          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
+          <Card className={classes.overviewCard} sx={{ ...theme.card, p: 2 }}>
+            <Typography sx={{ ...theme.cardHeading }}>
+              Customer Satisfaction (CSAT)
+            </Typography>
+            <Item>
+              <SentimateTodayGraph data={sentimateData} />
+            </Item>
+          </Card>
         </Item>
       </Container>
     </Container>
+  );
+};
+
+const SentimateTodayGraph = ({ data }) => {
+  return (
+    <Item sx={{ height: "260px", display: "flex" }}>
+      <div style={{ width: "70%" }}>
+        <ResponsivePie
+          theme={{
+            fontSize: 14,
+            fontWeight: "600",
+          }}
+          enableArcLabels={false}
+          valueFormat=" >-1.1%"
+          enableArcLinkLabels={false}
+          data={data}
+          margin={{ top: 20, right: 10, bottom: 20, left: 10 }}
+          innerRadius={0.7}
+          padAngle={0}
+          cornerRadius={1}
+          activeOuterRadiusOffset={8}
+          colors={{ datum: "data.color" }}
+          arcLinkLabelsSkipAngle={5}
+          // arcLinkLabels={false}
+          arcLinkLabelsTextColor="black"
+          arcLinkLabelsThickness={2}
+          arcLinkLabelsColor={{ from: "color" }}
+          arcLabelsSkipAngle={5}
+          arcLabelsTextColor="black"
+          tooltip={(point) => {
+            console.log("point", point);
+            return (
+              <div
+                style={{
+                  backgroundColor: "white",
+                  padding: "5px",
+                  display: "flex",
+                  gap: "5px",
+                  alignItems: "center",
+                  boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+                }}
+              >
+                <div
+                  style={{
+                    height: "15px",
+                    width: "15px",
+                    backgroundColor: point?.datum?.color,
+                  }}
+                ></div>
+                {point?.datum?.id}- {point?.datum?.value}
+              </div>
+            );
+          }}
+        />
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        {data?.map((item, index) => {
+          return (
+            <div
+              key={index}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-start",
+                flexDirection: "row",
+                marginTop: "-10px",
+              }}
+            >
+              <div
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  borderRadius: "10px",
+                  backgroundColor: item?.color,
+                }}
+              ></div>
+              <p
+                style={{
+                  fontSize: "13px",
+                  marginLeft: "5px",
+                  fontWeight: "500",
+                }}
+              >
+                {`${item?.label}`}
+                {/* {`${(item?.value * 100).toFixed(1)}% ${item?.label}`} */}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </Item>
   );
 };
 

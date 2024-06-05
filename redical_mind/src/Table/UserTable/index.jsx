@@ -6,6 +6,8 @@ import { Components } from "../../utils/materialUI";
 import { Typography } from "@mui/material";
 import theme from "../../utils/theme";
 import DummyData from "./dummyData";
+import SouthIcon from "@mui/icons-material/South";
+import NorthIcon from "@mui/icons-material/North";
 // import { API_GET, API_HANDLE_ERROR } from "../../../../utils/api";
 // import { useStateValue } from "../../../../utils/store";
 // import { getDate } from "../../../../utils/moment";
@@ -33,7 +35,7 @@ const headData = [
   },
   {
     id: "audioFile",
-    label: "Audio File (s)",
+    label: "Call Duration (s)",
     minWidth: 100,
     width: 100,
     maxWidth: 100,
@@ -63,6 +65,7 @@ const RiskEvaluationTable = ({ classes }) => {
   const [totalRiskEvaluation, setTotalRiskEvaluation] = useState(
     DummyData.length
   );
+  const [filterStatus, setFilterStatus] = useState("");
   const [data, setData] = useState(DummyData);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -73,44 +76,47 @@ const RiskEvaluationTable = ({ classes }) => {
     setPage(0);
   };
 
-  //   const getBudgetEvaluation = () => {
-  //     const resultCategory = category === "All" ? "" : `category=${category}`;
-  //     const resultLocation = location === "All" ? "" : `city=${location}`;
-  //     API_GET(
-  //       `reports/getRiskEvaluation?limit=${rowsPerPage}&skip=${
-  //         page * rowsPerPage
-  //       }&fromDate=${selectedFromDate}&toDate=${selectedToDate}&${resultCategory}&${resultLocation}`
-  //     )
-  //       .then((res) => {
-  //         setTotalRiskEvaluation(res?.count);
-  //         getRiskData(res);
-  //         setData(res?.data);
-  //       })
-  //       .catch((err) => {
-  //         API_HANDLE_ERROR(err, dispatch);
-  //       });
-  //   };
+  const handleSentimateScoreFilter = (status) => {
+    setFilterStatus(status);
+  };
 
-  //   useEffect(() => {
-  //     getBudgetEvaluation();
-  //   }, [
-  //     selectedFromDate,
-  //     selectedToDate,
-  //     category,
-  //     dispatch,
-  //     page,
-  //     rowsPerPage,
-  //     location,
-  //   ]);
+  useEffect(() => {
+    const incresingResult = [...data]?.sort((a, b) => {
+      return a?.Agent?.SentimentScore?.[0] - b?.Agent?.SentimentScore?.[0];
+    });
+    const incresingResultCustomer = [...data]?.sort((a, b) => {
+      return (
+        a?.Customer?.SentimentScore?.[0] - b?.Customer?.SentimentScore?.[0]
+      );
+    });
+
+    const descresingResult = [...data]?.sort((a, b) => {
+      return b?.Agent?.SentimentScore?.[0] - a?.Agent?.SentimentScore?.[0];
+    });
+    const descresingResultCustomer = [...data]?.sort((a, b) => {
+      return (
+        b?.Customer?.SentimentScore?.[0] - a?.Customer?.SentimentScore?.[0]
+      );
+    });
+
+    if (filterStatus === "Incresing") {
+      setData(incresingResult);
+    } else if (filterStatus === "Decresing") {
+      setData(descresingResult);
+    } else if (filterStatus === "CustomerDecresing") {
+      setData(descresingResultCustomer);
+    } else {
+      setData(incresingResultCustomer);
+    }
+  }, [filterStatus]);
 
   const colorGenrator = (value) => {
-    console.log("value", value);
     if (value <= -0.5) {
       return "#FF0000";
     } else if (value > -0.5 && value <= 0) {
-      return "#FFA500";
-    } else if (value > 0 && value <= 0.4) {
       return "pink";
+    } else if (value > 0 && value <= 0.4) {
+      return "#FFBF00";
     } else {
       return "#008000";
     }
@@ -163,20 +169,100 @@ const RiskEvaluationTable = ({ classes }) => {
 
             <TableRow className={classes.head}>
               {columns &&
-                columns.map((column, index) => (
-                  <StyledTableCell
-                    key={column.id}
-                    align={column.align}
-                    style={{
-                      minWidth: column.minWidth,
-                      padding: theme.spacing(0.5),
-                    }}
-                  >
-                    {column.id === "srNo" || column.id === "audioFile"
-                      ? ""
-                      : column.label}
-                  </StyledTableCell>
-                ))}
+                columns.map((column, index) => {
+                  if (column.id === "agentSentimentScore") {
+                    return (
+                      <StyledTableCell
+                        key={column.id}
+                        align={column.align}
+                        style={{
+                          minWidth: column.minWidth,
+                          padding: theme.spacing(0.5),
+                        }}
+                      >
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "2px",
+                          }}
+                        >
+                          {column.label}
+                          <SouthIcon
+                            fontSize="25"
+                            color="black"
+                            sx={{ cursor: "pointer" }}
+                            onClick={() =>
+                              handleSentimateScoreFilter("Decresing")
+                            }
+                          />
+                          <NorthIcon
+                            fontSize="25"
+                            color="black"
+                            sx={{ cursor: "pointer" }}
+                            onClick={() =>
+                              handleSentimateScoreFilter("Incresing")
+                            }
+                          />
+                        </div>
+                      </StyledTableCell>
+                    );
+                  }
+                  if (column.id === "customerSentimentScore") {
+                    return (
+                      <StyledTableCell
+                        key={column.id}
+                        align={column.align}
+                        style={{
+                          minWidth: column.minWidth,
+                          padding: theme.spacing(0.5),
+                        }}
+                      >
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "2px",
+                          }}
+                        >
+                          {column.label}
+                          <SouthIcon
+                            fontSize="25"
+                            color="black"
+                            sx={{ cursor: "pointer" }}
+                            onClick={() =>
+                              handleSentimateScoreFilter("CustomerDecresing")
+                            }
+                          />
+                          <NorthIcon
+                            fontSize="25"
+                            color="black"
+                            sx={{ cursor: "pointer" }}
+                            onClick={() =>
+                              handleSentimateScoreFilter("CustomerIncresing")
+                            }
+                          />
+                        </div>
+                      </StyledTableCell>
+                    );
+                  }
+                  return (
+                    <StyledTableCell
+                      key={column.id}
+                      align={column.align}
+                      style={{
+                        minWidth: column.minWidth,
+                        padding: theme.spacing(0.5),
+                      }}
+                    >
+                      {column.id === "srNo" || column.id === "audioFile"
+                        ? ""
+                        : column.label}
+                    </StyledTableCell>
+                  );
+                })}
             </TableRow>
           </TableHead>
           <TableBody>
