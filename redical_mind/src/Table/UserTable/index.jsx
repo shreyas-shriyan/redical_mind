@@ -8,6 +8,8 @@ import theme from "../../utils/theme";
 import DummyData from "./dummyData";
 import SouthIcon from "@mui/icons-material/South";
 import NorthIcon from "@mui/icons-material/North";
+import PlayCircleFilledSharpIcon from "@mui/icons-material/PlayCircleFilledSharp";
+import PauseCircleFilledSharpIcon from "@mui/icons-material/PauseCircleFilledSharp";
 // import { API_GET, API_HANDLE_ERROR } from "../../../../utils/api";
 // import { useStateValue } from "../../../../utils/store";
 // import { getDate } from "../../../../utils/moment";
@@ -27,10 +29,34 @@ const {
 const headData = [
   {
     id: "srNo",
-    label: "Sr.No",
+    label: "S.No",
     minWidth: 50,
     width: 50,
     maxWidth: 50,
+    align: "center",
+  },
+  {
+    id: "fileName",
+    label: "File Name",
+    minWidth: 100,
+    width: 100,
+    maxWidth: 100,
+    align: "center",
+  },
+  {
+    id: "playAudio",
+    label: "Play Audio",
+    minWidth: 100,
+    width: 100,
+    maxWidth: 100,
+    align: "center",
+  },
+  {
+    id: "date",
+    label: "Date",
+    minWidth: 100,
+    width: 100,
+    maxWidth: 100,
     align: "center",
   },
   {
@@ -62,6 +88,7 @@ const headData = [
 const RiskEvaluationTable = ({ classes }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(20);
+  const [audioStatus, setAudioStatus] = useState(false);
   const [totalRiskEvaluation, setTotalRiskEvaluation] = useState(
     DummyData.length
   );
@@ -119,6 +146,20 @@ const RiskEvaluationTable = ({ classes }) => {
       return "#FFBF00";
     } else {
       return "#008000";
+    }
+  };
+
+  let audio = new Audio("/demo.mp3");
+  const handlePlayAudio = () => {
+    audio.play();
+    audio.currentTime = 0;
+    setAudioStatus(true);
+  };
+
+  const handlePause = () => {
+    if (audioStatus === true) {
+      audio.pause();
+      setAudioStatus(false);
     }
   };
 
@@ -257,7 +298,11 @@ const RiskEvaluationTable = ({ classes }) => {
                         padding: theme.spacing(0.5),
                       }}
                     >
-                      {column.id === "srNo" || column.id === "audioFile"
+                      {column.id === "srNo" ||
+                      column.id === "audioFile" ||
+                      column.id === "fileName" ||
+                      column.id === "playAudio" ||
+                      column.id === "date"
                         ? ""
                         : column.label}
                     </StyledTableCell>
@@ -287,10 +332,53 @@ const RiskEvaluationTable = ({ classes }) => {
                             </StyledTableCell>
                           );
                         }
+                        if (column.id === "fileName") {
+                          return (
+                            <StyledTableCell align="center" key={column.id}>
+                              {row?.FileInfo?.FileName?.[0]}
+                            </StyledTableCell>
+                          );
+                        }
+                        if (column.id === "playAudio") {
+                          return (
+                            <StyledTableCell align="center" key={column.id}>
+                              <div>
+                                {audioStatus ? (
+                                  <PauseCircleFilledSharpIcon
+                                    onClick={handlePause}
+                                    sx={{
+                                      fontSize: "30px",
+                                      color:
+                                        theme.palette.primary.sidebarSecondary,
+                                      cursor: "pointer",
+                                    }}
+                                  />
+                                ) : (
+                                  <PlayCircleFilledSharpIcon
+                                    onClick={handlePlayAudio}
+                                    sx={{
+                                      fontSize: "30px",
+                                      color:
+                                        theme.palette.primary.sidebarSecondary,
+                                      cursor: "pointer",
+                                    }}
+                                  />
+                                )}
+                              </div>
+                            </StyledTableCell>
+                          );
+                        }
                         if (column.id === "audioFile") {
                           return (
                             <StyledTableCell align="center" key={column.id}>
                               {row?.FileInfo?.total_Call_Duration?.[0]}
+                            </StyledTableCell>
+                          );
+                        }
+                        if (column.id === "date") {
+                          return (
+                            <StyledTableCell align="center" key={column.id}>
+                              {row?.FileInfo?.date}
                             </StyledTableCell>
                           );
                         }

@@ -4,12 +4,19 @@ import { ThemeProvider } from "@mui/material/styles";
 
 // import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
-import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import theme from "./utils/theme";
-import Dashboard from "./pages/Dashboard";
-import Summary from "./pages/Summary";
-import Overview from "./pages/Overview";
+import ProcessCell from "./pages/ProcessCell";
+import SentimentAnalysis from "./pages/SentimentAnalysis";
+import ExecutiveOverview from "./pages/ExecutiveOverview";
+import FTERequires from "./pages/FTERequires";
+import CallVolume from "./pages/CallVolume";
+import AvarageHoldTime from "./pages/AvarageHoldTime";
+import ScheduleShrinkage from "./pages/ScheduleShrinkage";
+import Occupancy from "./pages/Occupancy";
+import HeadCount from "./pages/HeadCount";
+import PlanningView from "./pages/PlanningView";
+import ViewFileName from "./pages/ViewFileName";
 
 function App() {
   return (
@@ -17,22 +24,74 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<PublicRoute restricted={false} />}>
-            <Route path="/" element={<Home />} />
-          </Route>
-          <Route path="/" element={<PublicRoute restricted={false} />}>
-            <Route path="/qms/sentiment-analysis" element={<Home />} />
+            <Route path="/" element={<ExecutiveOverview />} />
           </Route>
           <Route
             path="/qms/executive-overview"
             element={<PublicRoute restricted={false} />}
           >
-            <Route path="/qms/executive-overview" element={<Overview />} />
+            <Route
+              path="/qms/executive-overview"
+              element={<ExecutiveOverview />}
+            />
           </Route>
+          <Route
+            path="/qms/process-calls"
+            element={<PublicRoute restricted={false} />}
+          >
+            <Route path="/qms/process-calls" element={<ProcessCell />} />
+          </Route>
+          <Route
+            path="/qms/process-calls/view"
+            element={<PublicRoute restricted={false} />}
+          >
+            <Route path="/qms/process-calls/view" element={<ViewFileName />} />
+          </Route>
+          <Route
+            path="/qms/sentiment-analysis"
+            element={<PublicRoute restricted={false} />}
+          >
+            <Route
+              path="/qms/sentiment-analysis"
+              element={<SentimentAnalysis />}
+            />
+          </Route>
+
           <Route
             path="/FTE-required"
             element={<PublicRoute restricted={false} />}
           >
-            <Route path="/FTE-required" element={<Dashboard />} />
+            <Route path="/FTE-required" element={<FTERequires />} />
+          </Route>
+          <Route
+            path="/call-volume"
+            element={<PublicRoute restricted={false} />}
+          >
+            <Route path="/call-volume" element={<CallVolume />} />
+          </Route>
+          <Route
+            path="/average-hold-Time"
+            element={<PublicRoute restricted={false} />}
+          >
+            <Route path="/average-hold-Time" element={<AvarageHoldTime />} />
+          </Route>
+          <Route
+            path="/schedule-shrinkage"
+            element={<PublicRoute restricted={false} />}
+          >
+            <Route path="/schedule-shrinkage" element={<ScheduleShrinkage />} />
+          </Route>
+          <Route path="/occupancy" element={<PublicRoute restricted={false} />}>
+            <Route path="/occupancy" element={<Occupancy />} />
+          </Route>
+          <Route path="/headcount" element={<PublicRoute restricted={false} />}>
+            <Route path="/headcount" element={<HeadCount />} />
+          </Route>
+          <Route
+            path="/planning-view"
+            element={<PublicRoute restricted={false} />}
+          >
+            <Route path="/planning-view" element={<PlanningView />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />

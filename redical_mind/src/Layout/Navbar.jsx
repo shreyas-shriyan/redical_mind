@@ -91,7 +91,7 @@ const Navbar = ({ onMenuClick, drawerWidth }) => {
           sx={{ display: "flex", alignItems: "center", gap: "10px" }}
         >
           <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
-            Hi, Jayesh
+            Hi Jayesh
           </Typography>
           <Avatar
             alt="Remy Sharp"

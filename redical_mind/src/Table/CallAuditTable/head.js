@@ -1,0 +1,70 @@
+const head = [
+  {
+    id: "date",
+    label: "Date",
+    minWidth: 50,
+    width: 50,
+    maxWidth: 50,
+    align: "center",
+  },
+  {
+    id: "campaign",
+    label: "Campaign",
+    minWidth: 140,
+    width: 140,
+    maxWidth: 140,
+    align: "center",
+  },
+  {
+    id: "phoneNumber",
+    label: "Phone Number",
+    minWidth: 40,
+    width: 40,
+    maxWidth: 40,
+    align: "center",
+  },
+  {
+    id: "userId",
+    label: "User Id",
+    minWidth: 140,
+    width: 140,
+    maxWidth: 140,
+    align: "center",
+  },
+  {
+    id: "agentfeedback",
+    label: "Agent Feedback",
+    minWidth: 100,
+    width: 100,
+    maxWidth: 100,
+    align: "center",
+  },
+  {
+    id: "totalScore",
+    label: "Total Score",
+    minWidth: 100,
+    width: 100,
+    maxWidth: 100,
+    align: "center",
+    // format: (value) => value.toLocaleString('en-US'),
+  },
+
+  {
+    id: "updateScore",
+    label: "Update Score",
+    minWidth: 100,
+    width: 100,
+    maxWidth: 100,
+    align: "center",
+  },
+  {
+    id: "fileName",
+    label: "Filename",
+    minWidth: 130,
+    width: 130,
+    maxWidth: 130,
+    align: "center",
+  },
+];
+
+export default head;

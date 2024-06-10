@@ -14,6 +14,16 @@ const styles = (theme) => {
       height: "100%",
       backgroundColor: "white",
     },
+    headingContainer: {
+      height: "7vh",
+      backgroundColor: theme.palette.primary.sidebarSecondary,
+      width: "100%",
+      display: "flex",
+      justifyContent: "start",
+      alignItems: "center",
+      color: "white",
+      padding: theme.spacing(2),
+    },
   };
 };
 

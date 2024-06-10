@@ -8,6 +8,30 @@ const head = [
     align: "center",
   },
   {
+    id: "fileName",
+    label: "File Name",
+    minWidth: 140,
+    width: 140,
+    maxWidth: 140,
+    align: "center",
+  },
+  {
+    id: "playAudio",
+    label: "Play Audio",
+    minWidth: 40,
+    width: 40,
+    maxWidth: 40,
+    align: "center",
+  },
+  {
+    id: "date",
+    label: "Date",
+    minWidth: 140,
+    width: 140,
+    maxWidth: 140,
+    align: "center",
+  },
+  {
     id: "audioFile",
     label: "Call Duration (s)",
     minWidth: 100,
@@ -36,9 +60,9 @@ const head = [
   {
     id: "agentSentimentScore",
     label: "Sentiment Score",
-    minWidth: 100,
-    width: 100,
-    maxWidth: 100,
+    minWidth: 130,
+    width: 130,
+    maxWidth: 130,
     align: "center",
   },
   {

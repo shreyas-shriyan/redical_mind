@@ -197,7 +197,7 @@ const Home = ({ classes }) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (location?.pathname === "/") {
-      navigate("/qms/sentiment-analysis");
+      navigate("/qms/executive-overview");
     }
   }, []);
 

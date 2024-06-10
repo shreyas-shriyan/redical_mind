@@ -43,6 +43,21 @@ const sentimateData = [
   },
 ];
 
+const FirstResponseChannelData = [
+  { name: "Urgent", value: 312, color: "#F44B3C", sla: 10, ticket: 54 },
+  { name: "High", value: 232, color: "#FB8F54", sla: 65, ticket: 26 },
+  { name: "Medium", value: 128, color: "#54BEEF", sla: 74, ticket: 13 },
+  { name: "Low", value: 98, color: "#5ECAC5", sla: 90, ticket: 54 },
+];
+const FirstResponseData = [
+  { name: "Network Outage", value: 10, sla: 10, ticket: 10 },
+  { name: "Billing Issue", value: 65, sla: 65, ticket: 65 },
+  { name: "Payment Issues", value: 74, sla: 74, ticket: 13 },
+  { name: "Speed Problem", value: 52, sla: 52, ticket: 54 },
+  { name: "Internet Problem", value: 42, sla: 42, ticket: 54 },
+  { name: "Uncategorized", value: 72, sla: 72, ticket: 54 },
+];
+
 const Overview = ({ classes }) => {
   const cardData = [
     {
@@ -169,19 +184,32 @@ const Overview = ({ classes }) => {
           <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
         </Item>
       </Container>
-      <Container spacing={2} sx={{ mt: 0, height: "320px" }}>
-        <Item md={6} lg={6} xs={12}>
-          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
-        </Item>
-        <Item md={6} lg={6} xs={12}>
-          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
-        </Item>
-      </Container>
-      <Container spacing={2} sx={{ mt: 0, height: "320px" }}>
+
+      <Container spacing={2} sx={{ mt: 0, height: "350px" }}>
         <Item md={6} lg={6} xs={12}>
           <Card className={classes.overviewCard} sx={{ ...theme.card, p: 2 }}>
             <Typography sx={{ ...theme.cardHeading }}>
-              Customer Satisfaction (CSAT)
+              First Response SLA% by Channel
+            </Typography>
+            <Item>
+              <FirstResponseChannel data={FirstResponseChannelData} />
+            </Item>
+          </Card>
+        </Item>
+        <Item md={6} lg={6} xs={12}>
+          <Card className={classes.overviewCard} sx={{ ...theme.card, p: 2 }}>
+            <Typography sx={{ ...theme.cardHeading }}>
+              First response time by issue type and SLA%
+            </Typography>
+            <Item>
+              <FirstResponse data={FirstResponseData} />
+            </Item>
+          </Card>
+        </Item>
+        <Item md={6} lg={6} xs={12}>
+          <Card className={classes.overviewCard} sx={{ ...theme.card, p: 2 }}>
+            <Typography sx={{ ...theme.cardHeading }}>
+              Customer Satisfaction (CSAT){" "}
             </Typography>
             <Item>
               <SentimateTodayGraph data={sentimateData} />
@@ -195,7 +223,7 @@ const Overview = ({ classes }) => {
 
 const SentimateTodayGraph = ({ data }) => {
   return (
-    <Item sx={{ height: "260px", display: "flex" }}>
+    <Item sx={{ height: "280px", display: "flex" }}>
       <div style={{ width: "70%" }}>
         <ResponsivePie
           theme={{
@@ -203,24 +231,26 @@ const SentimateTodayGraph = ({ data }) => {
             fontWeight: "600",
           }}
           enableArcLabels={false}
+          arcLinkLabelsSkipAngle={11}
+          arcLinkLabelsTextOffset={2}
+          arcLinkLabelsTextColor="black"
+          arcLinkLabelsOffset={-25}
+          arcLinkLabelsDiagonalLength={30}
+          arcLinkLabelsStraightLength={20}
+          arcLinkLabelsThickness={0}
+          arcLinkLabelsColor={{ from: "color" }}
+          arcLabelsSkipAngle={1}
           valueFormat=" >-1.1%"
-          enableArcLinkLabels={false}
+          enableArcLinkLabels={true}
           data={data}
-          margin={{ top: 20, right: 10, bottom: 20, left: 10 }}
+          margin={{ top: 40, right: 45, bottom: 40, left: 45 }}
           innerRadius={0.7}
           padAngle={0}
           cornerRadius={1}
-          activeOuterRadiusOffset={8}
+          activeOuterRadiusOffset={5}
           colors={{ datum: "data.color" }}
-          arcLinkLabelsSkipAngle={5}
           // arcLinkLabels={false}
-          arcLinkLabelsTextColor="black"
-          arcLinkLabelsThickness={2}
-          arcLinkLabelsColor={{ from: "color" }}
-          arcLabelsSkipAngle={5}
-          arcLabelsTextColor="black"
           tooltip={(point) => {
-            console.log("point", point);
             return (
               <div
                 style={{
@@ -287,6 +317,141 @@ const SentimateTodayGraph = ({ data }) => {
           );
         })}
       </div>
+    </Item>
+  );
+};
+
+const FirstResponseChannel = ({ data }) => {
+  return (
+    <Item md={12} xs={12} lg={12} mt={1}>
+      {data?.map((item) => {
+        return (
+          <Item
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "15px",
+            }}
+          >
+            <Item md={7} ld={7} xs={7}>
+              <Typography sx={{ fontSize: "13px", mb: 0.5 }}>
+                {item?.name}
+              </Typography>
+              <Item
+                sx={{
+                  backgroundColor: "#D9D9D9",
+                  width: "100%",
+                  position: "relative",
+                  height: "30px",
+                  zIndex: 1,
+                  display: "flex",
+                  borderRadius: "5px",
+
+                  alignItems: "center",
+                }}
+              >
+                <Item
+                  p={0.2}
+                  sx={{
+                    width: `${+item?.sla}%`,
+                    backgroundColor: item?.color,
+                    border: "none",
+                    position: "absolute",
+                    height: "30px",
+                    borderRadius: "5px",
+                    zIndex: -1,
+                  }}
+                ></Item>
+              </Item>
+            </Item>
+            <Item md={1.5} ld={1.5} xs={1.5} ml={3} mt={2}>
+              <Typography
+                sx={{ fontSize: "14px" }}
+              >{`${item?.sla}%`}</Typography>
+              <Typography sx={{ fontSize: "14px", fontWeight: "600" }}>
+                Met SLA
+              </Typography>
+            </Item>
+            <Item md={1.5} ld={1.5} xs={1.5} ml={2} mt={2}>
+              <Typography
+                sx={{ fontSize: "14px" }}
+              >{`${item?.value}`}</Typography>
+            </Item>
+            <Item md={2} ld={2} xs={2} mt={2}>
+              <Typography sx={{ fontSize: "14px" }}>
+                {`(${item?.ticket}%)`}
+              </Typography>
+              <Typography sx={{ fontSize: "14px", fontWeight: "600" }}>
+                Ticket
+              </Typography>
+            </Item>
+          </Item>
+        );
+      })}
+    </Item>
+  );
+};
+const FirstResponse = ({ data }) => {
+  return (
+    <Item md={12} xs={12} lg={12} mt={1}>
+      {data?.map((item) => {
+        return (
+          <Item
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "15px",
+            }}
+          >
+            <Item md={7} ld={7} xs={7}>
+              <Typography sx={{ fontSize: "13px", mb: 0.5 }}>
+                {item?.name}
+              </Typography>
+              <Item
+                sx={{
+                  backgroundColor: "#8EC3D1",
+                  width: "100%",
+                  position: "relative",
+                  height: "20px",
+                  zIndex: 1,
+                  display: "flex",
+                  borderRadius: "5px",
+
+                  alignItems: "center",
+                }}
+              >
+                <Item
+                  p={0.2}
+                  sx={{
+                    width: `${+item?.sla}%`,
+                    backgroundColor: "#1B59F8",
+                    border: "none",
+                    position: "absolute",
+                    height: "20px",
+                    borderRadius: "5px",
+                    zIndex: -1,
+                  }}
+                ></Item>
+              </Item>
+            </Item>
+            <Item md={1.5} ld={1.5} xs={1.5} ml={3} mt={2}>
+              <Typography
+                sx={{ fontSize: "14px" }}
+              >{`${item?.sla}%`}</Typography>
+            </Item>
+            <Item md={1.5} ld={1.5} xs={1.5} ml={2} mt={2}>
+              <Typography
+                sx={{ fontSize: "14px" }}
+              >{`${item?.value}`}</Typography>
+            </Item>
+            <Item md={2} ld={2} xs={2} mt={2}>
+              <Typography sx={{ fontSize: "14px" }}>
+                {`(${item?.ticket}%)`}
+              </Typography>
+            </Item>
+          </Item>
+        );
+      })}
     </Item>
   );
 };

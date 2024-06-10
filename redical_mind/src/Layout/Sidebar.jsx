@@ -10,9 +10,10 @@ const Sidebar = ({ open, onClose, drawerWidth }) => {
   const location = useLocation();
 
   const sidebarRoute = [
-    { name: "Root Cause Analysis", path: "/qms/sentiment-analysis" },
-    // { name: "Home", path: "" },
     { name: "Executive Overview", path: "/qms/executive-overview" },
+    { name: "Process Call", path: "/qms/process-calls" },
+    { name: "Sentiment Analysis", path: "/qms/sentiment-analysis" },
+    // { name: "Home", path: "" },
     { name: "FTE Required", path: "/FTE-required" },
     { name: "Call Volume", path: "/call-volume" },
     { name: "Average Hold Time", path: "/average-hold-Time" },
