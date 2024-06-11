@@ -55,7 +55,27 @@ const TermArray = ["NOAGENT"];
 const LeadArray = ["5757681"];
 
 const ProcessCell = ({ classes }) => {
-  const [data, setData] = useState({});
+  const [postData, setPostData] = useState({
+    callType: "",
+    campaign: "",
+    date: "",
+    user: "",
+    status: "",
+    termReason: "",
+    leadID: "",
+  });
+
+  const handleStateChange = (key, value) => {
+    setPostData((pre) => {
+      pre[`${key}`] = value;
+      return { ...pre };
+    });
+  };
+
+  const handlePostData = () => {
+    console.log("postData", postData);
+  };
+
   return (
     <Container md={12} xs={12} lg={12}>
       <Card sx={{ ...theme.card, minHeight: "30vh" }}>
@@ -99,7 +119,7 @@ const ProcessCell = ({ classes }) => {
                     background: "#EBF4FF",
                   },
                 }}
-                // value={selectedValue}
+                value={postData?.callType}
                 label="Call Type"
                 onChange={(e) => handleStateChange("callType", e.target.value)}
               >
@@ -135,7 +155,7 @@ const ProcessCell = ({ classes }) => {
                     background: "#EBF4FF",
                   },
                 }}
-                // value={selectedValue}
+                value={postData?.campaign}
                 label="Campaign"
                 onChange={(e) => handleStateChange("campaign", e.target.value)}
               >
@@ -172,7 +192,7 @@ const ProcessCell = ({ classes }) => {
                     background: "#EBF4FF",
                   },
                 }}
-                // value={selectedValue}
+                value={postData?.date}
                 label="Date"
                 onChange={(e) => handleStateChange("date", e.target.value)}
               >
@@ -208,7 +228,7 @@ const ProcessCell = ({ classes }) => {
                     background: "#EBF4FF",
                   },
                 }}
-                // value={selectedValue}
+                value={postData?.user}
                 label="User"
                 onChange={(e) => handleStateChange("user", e.target.value)}
               >
@@ -244,7 +264,7 @@ const ProcessCell = ({ classes }) => {
                     background: "#EBF4FF",
                   },
                 }}
-                // value={selectedValue}
+                value={postData?.status}
                 label="Status"
                 onChange={(e) => handleStateChange("status", e.target.value)}
               >
@@ -280,7 +300,7 @@ const ProcessCell = ({ classes }) => {
                     background: "#EBF4FF",
                   },
                 }}
-                // value={selectedValue}
+                value={postData?.termReason}
                 label="Term Reason"
                 onChange={(e) =>
                   handleStateChange("termReason", e.target.value)
@@ -318,7 +338,7 @@ const ProcessCell = ({ classes }) => {
                     background: "#EBF4FF",
                   },
                 }}
-                // value={selectedValue}
+                value={postData?.leadID}
                 label="Lead ID"
                 onChange={(e) => handleStateChange("leadID", e.target.value)}
               >
@@ -334,6 +354,7 @@ const ProcessCell = ({ classes }) => {
           </Item>
           <Item mt={1} lg={3.8} xs={12} md={5.8}>
             <Button
+              onClick={handlePostData}
               style={{
                 width: "50%",
                 backgroundColor: theme.palette.primary.sidebarSecondary,

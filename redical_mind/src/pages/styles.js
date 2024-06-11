@@ -24,6 +24,9 @@ const styles = (theme) => {
       color: "white",
       padding: theme.spacing(2),
     },
+    table: {
+      border: "1px solid grey",
+    },
   };
 };
 
