@@ -1,7 +1,7 @@
 import React from "react";
 
 const CallVolume = () => {
-  return <div>Call Volume</div>;
+  return <div>CallVolume</div>;
 };
 
 export default CallVolume;

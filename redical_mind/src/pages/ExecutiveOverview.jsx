@@ -152,39 +152,6 @@ const Overview = ({ classes }) => {
           );
         })}
       </Item>
-      <Container spacing={2} sx={{ mt: 0, height: "250px" }}>
-        <Item md={6} lg={6} xs={12}>
-          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
-        </Item>
-        <Item md={6} lg={6} xs={12}>
-          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
-        </Item>
-      </Container>
-      <Container spacing={2} sx={{ mt: 0, height: "250px" }}>
-        <Item md={6} lg={6} xs={12}>
-          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
-        </Item>
-        <Item md={6} lg={6} xs={12}>
-          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
-        </Item>
-      </Container>
-      <Container spacing={2} sx={{ mt: 0, height: "250px" }}>
-        <Item md={6} lg={6} xs={12}>
-          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
-        </Item>
-        <Item md={6} lg={6} xs={12}>
-          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
-        </Item>
-      </Container>
-      <Container spacing={2} sx={{ mt: 0, height: "250px" }}>
-        <Item md={6} lg={6} xs={12}>
-          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
-        </Item>
-        <Item md={6} lg={6} xs={12}>
-          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
-        </Item>
-      </Container>
-
       <Container spacing={2} sx={{ mt: 0, height: "350px" }}>
         <Item md={6} lg={6} xs={12}>
           <Card className={classes.overviewCard} sx={{ ...theme.card, p: 2 }}>
@@ -206,6 +173,11 @@ const Overview = ({ classes }) => {
             </Item>
           </Card>
         </Item>
+        {/* <Item md={6} lg={6} xs={12}>
+         
+        </Item> */}
+      </Container>
+      <Container spacing={2} sx={{ mt: 0 }}>
         <Item md={6} lg={6} xs={12}>
           <Card className={classes.overviewCard} sx={{ ...theme.card, p: 2 }}>
             <Typography sx={{ ...theme.cardHeading }}>
@@ -216,6 +188,33 @@ const Overview = ({ classes }) => {
             </Item>
           </Card>
         </Item>
+        <Item md={6} lg={6} xs={12}>
+          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
+        </Item>
+      </Container>
+      <Container spacing={2} sx={{ mt: 0, height: "250px" }}>
+        <Item md={6} lg={6} xs={12}>
+          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
+        </Item>
+        <Item md={6} lg={6} xs={12}>
+          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
+        </Item>
+      </Container>
+      <Container spacing={2} sx={{ mt: 0, height: "250px" }}>
+        <Item md={6} lg={6} xs={12}>
+          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
+        </Item>
+        <Item md={6} lg={6} xs={12}>
+          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
+        </Item>
+      </Container>
+      <Container spacing={2} sx={{ mt: 0, height: "250px" }}>
+        <Item md={6} lg={6} xs={12}>
+          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
+        </Item>
+        <Item md={6} lg={6} xs={12}>
+          <Card className={classes.overviewCard} sx={{ ...theme.card }}></Card>
+        </Item>
       </Container>
     </Container>
   );
@@ -223,7 +222,7 @@ const Overview = ({ classes }) => {
 
 const SentimateTodayGraph = ({ data }) => {
   return (
-    <Item sx={{ height: "280px", display: "flex" }}>
+    <Item sx={{ height: "250px", display: "flex" }}>
       <div style={{ width: "70%" }}>
         <ResponsivePie
           theme={{

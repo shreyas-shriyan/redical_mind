@@ -7,9 +7,8 @@
             "Hello Yeah No, no, no, but they are telling that food is not there Yes sir They told that food is not there That's what now, they told food is not there and we came out for food What will help you sir, other than this? They will do that only because they are telling food is not there They told that, no, no, food is not there they said Sir, I am not able to hear you sir Food is not there they said Yes Okay Okay sir, like I have told you like they have denied sir No, they are saying food is not there, you are telling, I am saying You ask them no, if they provided food or not They will provide food or not? You ask them whether they have provided food or not They said food is not there They have ordered lunch also, right? They have ordered lunch also, right? Can I please place a call and hold for two minutes? Yes, yes    has provided the company I'm not able to connect so that I just wanted to we did not order it we asked them then they said it's not there yes sir yes sir sir ype you"
         ],
         "SentimentScore": 0.11830357142857142,
-        "Subjectivity": 0.5870535714285714, # round to 2 decimal places
-  
-      "SentimentType": "Positive"
+        "Subjectivity": 0.5870535714285714,
+        "SentimentType": "Positive"
     },
     "Agent": {
         "transcription": [
@@ -21,137 +20,137 @@
     },
     "conversation": [
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:00:00",
             "dialogue": " Hello"
         },
         {
-            "speaker": "SPEAKER 2",
+            "speaker": "Agent: Ravi Jain",
             "timestamp": "0:00:02",
             "dialogue": "Good afternoon, my name is Ravi, I am calling from Make My Trip"
         },
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:00:06",
             "dialogue": "Yeah"
         },
         {
-            "speaker": "SPEAKER 2",
+            "speaker": "Agent: Ravi Jain",
             "timestamp": "0:00:08",
             "dialogue": "So, like you have requested for the cancellation, I have tried to convince the hotel as well as the area manager, the both have denied sir And also they have shared the mail that you have ordered the food and you are going to stay at hotel, right sir?"
         },
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:00:20",
             "dialogue": "No, no, no, but they are telling that food is not there Yes sir They told that food is not there"
         },
         {
-            "speaker": "SPEAKER 2",
+            "speaker": "Agent: Ravi Jain",
             "timestamp": "0:00:28",
             "dialogue": "So sir, I have tried to convince the hotel but they have denied sir, so your refund cannot be possible sir"
         },
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:00:34",
             "dialogue": "That's what now, they told food is not there and we came out for food"
         },
         {
-            "speaker": "SPEAKER 2",
+            "speaker": "Agent: Ravi Jain",
             "timestamp": "0:00:39",
             "dialogue": "Okay sir, apart from this, can I help you any other thing sir?"
         },
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:00:43",
             "dialogue": "What will help you sir, other than this?"
         },
         {
-            "speaker": "SPEAKER 2",
+            "speaker": "Agent: Ravi Jain",
             "timestamp": "0:00:46",
             "dialogue": "Sir, after the cancellation policy as I told you sir, it totally depends on the hotel decision sir If they agree, then only I can cancel the booking and provide the refund sir But as they have shared the denial in the mail In the mail sir, so I am very sorry for that sir"
         },
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:01:01",
             "dialogue": "They will do that only because they are telling food is not there"
         },
         {
-            "speaker": "SPEAKER 2",
+            "speaker": "Agent: Ravi Jain",
             "timestamp": "0:01:05",
             "dialogue": "What they are telling? Booking is not there?"
         },
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:01:08",
             "dialogue": "They told that, no, no, food is not there they said Sir, I am not able to hear you sir Food is not there they said"
         },
         {
-            "speaker": "SPEAKER 2",
+            "speaker": "Agent: Ravi Jain",
             "timestamp": "0:01:16",
             "dialogue": "Food is not there?"
         },
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:01:18",
             "dialogue": "Yes Okay"
         },
         {
-            "speaker": "SPEAKER 2",
+            "speaker": "Agent: Ravi Jain",
             "timestamp": "0:01:22",
             "dialogue": "Okay sir, like I have told you like they have denied sir"
         },
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:01:26",
             "dialogue": "Okay sir, like I have told you like they have denied sir No, they are saying food is not there, you are telling, I am saying You ask them no, if they provided food or not They will provide food or not? You ask them whether they have provided food or not They said food is not there"
         },
         {
-            "speaker": "SPEAKER 2",
+            "speaker": "Agent: Ravi Jain",
             "timestamp": "0:01:49",
             "dialogue": "Sir, like they said in the mail, you have ordered for lunch also, right?"
         },
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:01:56",
             "dialogue": "They have ordered lunch also, right? They have ordered lunch also, right?"
         },
         {
-            "speaker": "SPEAKER 2",
+            "speaker": "Agent: Ravi Jain",
             "timestamp": "0:02:00",
             "dialogue": "Okay sir, I am just reconfirming from the hotel Can I please place a call and hold for two minutes?"
         },
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:02:04",
             "dialogue": "Can I please place a call and hold for two minutes? Yes, yes    has provided the company I'm not able to connect so that I just wanted to"
         },
         {
-            "speaker": "SPEAKER 2",
+            "speaker": "Agent: Ravi Jain",
             "timestamp": "0:04:12",
             "dialogue": "inform sir they are they are denied for the cancellation sir so like yes sir so apart from this can I help you in any other thing sir this is the only help I need but they have denied as I told you sir already"
         },
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:04:31",
             "dialogue": "we did not order it we asked them then they said it's not there yes sir yes sir"
         },
         {
-            "speaker": "SPEAKER 2",
+            "speaker": "Agent: Ravi Jain",
             "timestamp": "0:04:51",
             "dialogue": "like yes sir hotel has denied for the cancellation sir that's what I'm telling"
         },
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:05:02",
             "dialogue": "sir"
         },
         {
-            "speaker": "SPEAKER 2",
+            "speaker": "Agent: Ravi Jain",
             "timestamp": "0:05:11",
             "dialogue": "yes sir so thank you with connecting with us sir"
         },
         {
-            "speaker": "SPEAKER 1",
+            "speaker": "Customer: Abhishek",
             "timestamp": "0:05:21",
             "dialogue": "ype you"
         }

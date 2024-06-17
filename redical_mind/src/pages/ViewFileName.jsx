@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Components } from "../utils/materialUI";
 import styles from "./styles";
 import theme from "../utils/theme";
-import { Button } from "@mui/material";
+import { Button, selectClasses } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
+import ChatConversion from "./ProcessCell/ChatConversion";
 
 const {
   withStyles,
@@ -23,8 +24,21 @@ const Item = (props) => <Grid item {...props} />;
 
 const weekArray = ["Week-1", "Week-2", "Week-3", "Week-4", "Week-5"];
 
+const tabArray = [
+  {
+    name: "Call Transcript",
+    value: "callTranscript",
+    Components: <ChatConversion />,
+  },
+  { name: "Call Summary", value: "callSummary", Components: "call Summary" },
+  { name: "Issue", value: "issue", Components: "issue" },
+  { name: "Sentiment Score", value: "sentimentScore", Components: "bdsnvc" },
+  { name: "QA Score Card", value: "QAScoreCard", Components: "" },
+];
+
 const ViewFileName = ({ classes }) => {
   const navigate = useNavigate();
+  const [selectedTab, setSelectedTab] = useState(tabArray[0]);
 
   const [postData, setPostData] = useState({
     user: "Ghanshyam",
@@ -37,14 +51,14 @@ const ViewFileName = ({ classes }) => {
     customerExperienceScore: "90%",
     processAdherenceScore: "60%",
     agentTranscription:
-      "Hello Yeah No, no, no, but they are telling that food is not there Yes sir They told that food is not there That's what now, they told food is not there and we came out for food What will help you sir, other than this? They will do that only because they are telling food is not there They told that, no, no, food is not there they said Sir, I am not able to hear you sir Food is not there they said Yes Okay Okay sir, like I have told you like they have denied sir No, they are saying food is not there, you are telling, I am saying You ask them no, if they provided food or not They will provide food or not? You ask them whether they have provided food or not They said food is not there They have ordered lunch also, right? They have ordered lunch also, right? Can I please place a call and hold for two minutes? Yes, yes    has provided the company I'm not able to connect so that I just wanted to we did not order it we asked them then they said it's not there yes sir yes sir sir ype you",
+      "Good afternoon, my name is Ravi, I am calling from Make My Trip So, like you have requested for the cancellation, I have tried to convince the hotel as well as the area manager, the both have denied sir And also they have shared the mail that you have ordered the food and you are going to stay at hotel, right sir? So sir, I have tried to convince the hotel but they have denied sir, so your refund cannot be possible sir Okay sir, apart from this, can I help you any other thing sir? Sir, after the cancellation policy as I told you sir, it totally depends on the hotel decision sir If they agree, then only I can cancel the booking and provide the refund sir But as they have shared the denial in the mail In the mail sir, so I am very sorry for that sir What they are telling? Booking is not there? Food is not there? Okay sir, like I have told you like they have denied sir Sir, like they said in the mail, you have ordered for lunch also, right? Okay sir, I am just reconfirming from the hotel Can I please place a call and hold for two minutes? inform sir they are they are denied for the cancellation sir so like yes sir so apart from this can I help you in any other thing sir this is the only help I need but they have denied as I told you sir already like yes sir hotel has denied for the cancellation sir that's what I'm telling yes sir so thank you with connecting with us sir",
     customerTranscription:
       "Hello Yeah No, no, no, but they are telling that food is not there Yes sir They told that food is not there That's what now, they told food is not there and we came out for food What will help you sir, other than this? They will do that only because they are telling food is not there They told that, no, no, food is not there they said Sir, I am not able to hear you sir Food is not there they said Yes Okay Okay sir, like I have told you like they have denied sir No, they are saying food is not there, you are telling, I am saying You ask them no, if they provided food or not They will provide food or not? You ask them whether they have provided food or not They said food is not there They have ordered lunch also, right? They have ordered lunch also, right? Can I please place a call and hold for two minutes? Yes, yes    has provided the company I'm not able to connect so that I just wanted to we did not order it we asked them then they said it's not there yes sir yes sir sir ype you",
-    issueType: "2",
-    subIssueType: "1",
+    issueType: "Modify Flight Booking",
+    subIssueType: "Upgrade to Business Class",
     contactNumber: "7220030018",
     week: "Week-1",
-    feedbackDate: "24-12-2024",
+    feedbackDate: "2024-12-20",
     description: "Hello Yeah No",
   });
 
@@ -70,6 +84,10 @@ const ViewFileName = ({ classes }) => {
       description: "",
     },
   ]);
+
+  const handleTabChange = (tab) => {
+    setSelectedTab(tab);
+  };
 
   const handleStateChange = (key, value) => {
     setPostData((pre) => {
@@ -256,6 +274,8 @@ const ViewFileName = ({ classes }) => {
                 label="Agent Transcription"
                 variant="outlined"
                 size="small"
+                multiline
+                rows={4}
                 value={postData?.agentTranscription}
                 onChange={(e) =>
                   handleStateChnage("agentTranscription", e.target.value)
@@ -269,316 +289,386 @@ const ViewFileName = ({ classes }) => {
                 label="Customer Transcription"
                 variant="outlined"
                 size="small"
+                multiline
+                rows={4}
                 value={postData?.customerTranscription}
                 onChange={(e) =>
                   handleStateChnage("customerTranscription", e.target.value)
                 }
               />
             </Item>
-            <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="Section Scores"
-                variant="outlined"
-                size="small"
-                value={postData?.sectionScores}
-                onChange={(e) =>
-                  handleStateChnage("sectionScores", e.target.value)
-                }
-              />
-            </Item>
-            <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="Customer Experience Score"
-                variant="outlined"
-                size="small"
-                value={postData?.customerExperienceScore}
-                onChange={(e) =>
-                  handleStateChnage("customerExperienceScore", e.target.value)
-                }
-              />
-            </Item>
-            <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="Process Adherence Score"
-                variant="outlined"
-                size="small"
-                value={postData?.processAdherenceScore}
-                onChange={(e) =>
-                  handleStateChnage("processAdherenceScore", e.target.value)
-                }
-              />
-            </Item>
           </Item>
 
-          <Item>
-            <SectionScore classes={classes} />
-          </Item>
-
-          <Item className={classes.headingContainer}>
-            <Typography sx={{ fontWeight: "500", fontSize: "18px" }}>
-              Enter Your Feedback About Above Audio
-            </Typography>
-          </Item>
           <Item
-            sx={{
-              width: "100vw",
-              display: "flex",
-              gap: "10px",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-            }}
-            lg={12}
+            className={classes.tabContainer}
             xs={12}
+            lg={12}
             md={12}
             p={3}
+            pt={1}
           >
-            <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="Issue Type"
-                variant="outlined"
-                required={true}
-                size="small"
-                value={postData?.issueType}
-                onChange={(e) => handleStateChnage("issueType", e.target.value)}
-              />
-            </Item>
-            <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="Sub Issue Type"
-                variant="outlined"
-                size="small"
-                required={true}
-                value={postData?.subIssueType}
-                onChange={(e) =>
-                  handleStateChnage("subIssueType", e.target.value)
-                }
-              />
-            </Item>
-            <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="Contact Number"
-                variant="outlined"
-                size="small"
-                type="number"
-                required={true}
-                value={postData?.contactNumber}
-                onChange={(e) =>
-                  handleStateChnage("contactNumber", e.target.value)
-                }
-              />
-            </Item>
-            <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="Lead ID"
-                variant="outlined"
-                size="small"
-                value={postData?.leadID}
-                onChange={(e) => handleStateChnage("leadID", e.target.value)}
-              />
-            </Item>
-            <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label" size="small">
-                  Week
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  size="small"
-                  MenuProps={{
-                    sx: {
-                      "&& .Mui-selected": {
-                        color: "white",
-                        background: theme.palette.primary.sidebarSecondary,
-                      },
-                    },
+            {tabArray?.map((item, index) => {
+              return (
+                <Item
+                  xs={12}
+                  lg={2.2}
+                  md={3}
+                  className={classes.tab}
+                  onClick={() => handleTabChange(item)}
+                  style={{
+                    backgroundColor:
+                      selectedTab?.value === item?.value
+                        ? theme.palette.primary.sidebarSecondary
+                        : "white",
+                    color: selectedTab?.value === item?.value && "white",
                   }}
-                  sx={{
-                    "& [aria-expanded=true]": {
-                      background: "#EBF4FF",
-                    },
-                  }}
-                  value={postData?.week}
-                  label="Week"
-                  onChange={(e) => handleStateChange("week", e.target.value)}
                 >
-                  {weekArray?.map((item, index) => {
+                  {item?.name}
+                </Item>
+              );
+            })}
+          </Item>
+
+          <Item className={classes.headingContainer} mt={4} mb={2}>
+            <Typography sx={{ fontWeight: "500", fontSize: "18px" }}>
+              {selectedTab?.name}
+            </Typography>
+          </Item>
+
+          {selectedTab?.value === "QAScoreCard" ? (
+            <Item>
+              <Item
+                sx={{
+                  width: "100vw",
+                  display: "flex",
+                  gap: "10px",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                }}
+                lg={12}
+                xs={12}
+                md={12}
+                p={3}
+              >
+                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Section Scores"
+                    variant="outlined"
+                    size="small"
+                    value={postData?.sectionScores}
+                    onChange={(e) =>
+                      handleStateChnage("sectionScores", e.target.value)
+                    }
+                  />
+                </Item>
+                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Customer Experience Score"
+                    variant="outlined"
+                    size="small"
+                    value={postData?.customerExperienceScore}
+                    onChange={(e) =>
+                      handleStateChnage(
+                        "customerExperienceScore",
+                        e.target.value
+                      )
+                    }
+                  />
+                </Item>
+                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Process Adherence Score"
+                    variant="outlined"
+                    size="small"
+                    value={postData?.processAdherenceScore}
+                    onChange={(e) =>
+                      handleStateChnage("processAdherenceScore", e.target.value)
+                    }
+                  />
+                </Item>
+              </Item>
+
+              <Item>
+                <SectionScore classes={classes} />
+              </Item>
+
+              <Item
+                sx={{
+                  width: "100vw",
+                  display: "flex",
+                  gap: "10px",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                }}
+                lg={12}
+                xs={12}
+                md={12}
+                p={3}
+              >
+                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Issue Type"
+                    variant="outlined"
+                    required={true}
+                    size="small"
+                    value={postData?.issueType}
+                    onChange={(e) =>
+                      handleStateChnage("issueType", e.target.value)
+                    }
+                  />
+                </Item>
+                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Sub Issue Type"
+                    variant="outlined"
+                    size="small"
+                    required={true}
+                    value={postData?.subIssueType}
+                    onChange={(e) =>
+                      handleStateChnage("subIssueType", e.target.value)
+                    }
+                  />
+                </Item>
+                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Contact Number"
+                    variant="outlined"
+                    size="small"
+                    type="number"
+                    required={true}
+                    value={postData?.contactNumber}
+                    onChange={(e) =>
+                      handleStateChnage("contactNumber", e.target.value)
+                    }
+                  />
+                </Item>
+                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Lead ID"
+                    variant="outlined"
+                    size="small"
+                    value={postData?.leadID}
+                    onChange={(e) =>
+                      handleStateChnage("leadID", e.target.value)
+                    }
+                  />
+                </Item>
+                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label" size="small">
+                      Week
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      size="small"
+                      MenuProps={{
+                        sx: {
+                          "&& .Mui-selected": {
+                            color: "white",
+                            background: theme.palette.primary.sidebarSecondary,
+                          },
+                        },
+                      }}
+                      sx={{
+                        "& [aria-expanded=true]": {
+                          background: "#EBF4FF",
+                        },
+                      }}
+                      value={postData?.week}
+                      label="Week"
+                      onChange={(e) =>
+                        handleStateChange("week", e.target.value)
+                      }
+                    >
+                      {weekArray?.map((item, index) => {
+                        return (
+                          <MenuItem value={item} key={index}>
+                            {item}
+                          </MenuItem>
+                        );
+                      })}
+                    </Select>
+                  </FormControl>
+                </Item>
+                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Feedback Date"
+                    variant="outlined"
+                    size="small"
+                    type="date"
+                    value={postData?.feedbackDate}
+                    onChange={(e) =>
+                      handleStateChnage("feedbackDate", e.target.value)
+                    }
+                  />
+                </Item>
+                <Item mt={4} lg={12} xs={12} md={12}>
+                  {Questions?.map((item, queIndex) => {
                     return (
-                      <MenuItem value={item} key={index}>
-                        {item}
-                      </MenuItem>
+                      <Item
+                        mt={1.5}
+                        lg={12}
+                        xs={12}
+                        md={12}
+                        pb={2}
+                        pt={2}
+                        sx={{
+                          borderBottom: "1px solid lightgrey",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        <Item lg={6} xs={12} md={6} mt={2}>
+                          <Typography
+                            sx={{ fontSize: "15px", fontWeight: "500" }}
+                          >
+                            {`${queIndex + 1} : ${item?.name}`}
+                          </Typography>
+                        </Item>
+                        <Item lg={2.5} xs={12} md={3} mt={2}>
+                          <FormControl fullWidth>
+                            <InputLabel
+                              id="demo-simple-select-label"
+                              size="small"
+                            >
+                              Choose
+                            </InputLabel>
+                            <Select
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              size="small"
+                              MenuProps={{
+                                sx: {
+                                  "&& .Mui-selected": {
+                                    color: "white",
+                                    background:
+                                      theme.palette.primary.sidebarSecondary,
+                                  },
+                                },
+                              }}
+                              sx={{
+                                "& [aria-expanded=true]": {
+                                  background: "#EBF4FF",
+                                },
+                              }}
+                              value={item?.value}
+                              label="Choose"
+                              onChange={(e) =>
+                                handleQuestionChange(
+                                  "value",
+                                  e.target.value,
+                                  queIndex
+                                )
+                              }
+                            >
+                              <MenuItem value="Yes">Yes</MenuItem>
+                              <MenuItem value="No">No</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </Item>
+                        <Item lg={2.5} xs={12} md={3} mt={2}>
+                          <TextField
+                            fullWidth
+                            id="outlined-basic"
+                            label="Description"
+                            variant="outlined"
+                            size="small"
+                            value={item?.description}
+                            onChange={(e) =>
+                              handleQuestionChange(
+                                "description",
+                                e.target.value,
+                                queIndex
+                              )
+                            }
+                          />
+                        </Item>
+                      </Item>
                     );
                   })}
-                </Select>
-              </FormControl>
-            </Item>
-            <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="Feedback Date"
-                variant="outlined"
-                size="small"
-                type="date"
-                value={postData?.feedbackDate}
-                onChange={(e) =>
-                  handleStateChnage("feedbackDate", e.target.value)
-                }
-              />
-            </Item>
-            <Item mt={4} lg={12} xs={12} md={12}>
-              {Questions?.map((item, queIndex) => {
-                return (
-                  <Item
-                    mt={1.5}
-                    lg={12}
-                    xs={12}
-                    md={12}
-                    pb={2}
-                    pt={2}
-                    sx={{
-                      borderBottom: "1px solid lightgrey",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      flexWrap: "wrap",
-                    }}
-                  >
-                    <Item lg={6} xs={12} md={6} mt={2}>
-                      <Typography sx={{ fontSize: "15px", fontWeight: "500" }}>
-                        {`${queIndex + 1} : ${item?.name}`}
-                      </Typography>
-                    </Item>
-                    <Item lg={2.5} xs={12} md={3} mt={2}>
-                      <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label" size="small">
-                          Choose
-                        </InputLabel>
-                        <Select
-                          labelId="demo-simple-select-label"
-                          id="demo-simple-select"
-                          size="small"
-                          MenuProps={{
-                            sx: {
-                              "&& .Mui-selected": {
-                                color: "white",
-                                background:
-                                  theme.palette.primary.sidebarSecondary,
-                              },
-                            },
-                          }}
-                          sx={{
-                            "& [aria-expanded=true]": {
-                              background: "#EBF4FF",
-                            },
-                          }}
-                          value={item?.value}
-                          label="Choose"
-                          onChange={(e) =>
-                            handleQuestionChange(
-                              "value",
-                              e.target.value,
-                              queIndex
-                            )
-                          }
-                        >
-                          <MenuItem value="Yes">Yes</MenuItem>
-                          <MenuItem value="No">No</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </Item>
-                    <Item lg={2.5} xs={12} md={3} mt={2}>
-                      <TextField
-                        fullWidth
-                        id="outlined-basic"
-                        label="Description"
-                        variant="outlined"
-                        size="small"
-                        value={item?.description}
-                        onChange={(e) =>
-                          handleQuestionChange(
-                            "description",
-                            e.target.value,
-                            queIndex
-                          )
-                        }
-                      />
-                    </Item>
-                  </Item>
-                );
-              })}
-            </Item>
+                </Item>
 
-            <Item
-              mt={1.5}
-              lg={12}
-              xs={12}
-              md={12}
-              sx={{ display: "flex", alignItems: "center", gap: "10px" }}
-            >
-              <Item lg={3} xs={12} md={4}>
-                Description
+                <Item
+                  mt={1.5}
+                  lg={12}
+                  xs={12}
+                  md={12}
+                  sx={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <Item lg={3} xs={12} md={4}>
+                    Description
+                  </Item>
+                  <textarea
+                    onChange={(e) =>
+                      handleStateChange("description", e.target.value)
+                    }
+                    name=""
+                    id=""
+                    value={postData?.description}
+                    style={{ width: "100%", height: "50px" }}
+                  />
+                </Item>
               </Item>
-              <textarea
-                onChange={(e) =>
-                  handleStateChange("description", e.target.value)
-                }
-                name=""
-                id=""
-                value={postData?.description}
-                style={{ width: "100%", height: "50px" }}
-              />
+              <Item
+                m={2}
+                lg={12}
+                xs={12}
+                md={12}
+                sx={{
+                  display: "flex",
+                  gap: "10px",
+                  justifyContent: "center",
+                }}
+              >
+                <Button
+                  onClick={() => navigate(`/qms/process-calls`)}
+                  variant="outlined"
+                  sx={{
+                    width: "100px",
+                    // ml: "auto",
+                    color: theme.palette.primary.sidebarSecondary,
+                    backgroundColor: "white",
+                    border: `1px solid ${theme.palette.primary.sidebarSecondary}`,
+                  }}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  style={{
+                    width: "100px",
+                    backgroundColor: theme.palette.primary.sidebarSecondary,
+                    color: "white",
+                  }}
+                >
+                  Submit
+                </Button>
+              </Item>
             </Item>
-          </Item>
-          <Item
-            m={2}
-            lg={12}
-            xs={12}
-            md={12}
-            sx={{
-              display: "flex",
-              gap: "10px",
-              justifyContent: "center",
-            }}
-          >
-            <Button
-              onClick={() => navigate(`/qms/process-calls`)}
-              variant="outlined"
-              sx={{
-                width: "100px",
-                // ml: "auto",
-                color: theme.palette.primary.sidebarSecondary,
-                backgroundColor: "white",
-                border: `1px solid ${theme.palette.primary.sidebarSecondary}`,
-              }}
-            >
-              Cancel
-            </Button>
-            <Button
-              type="submit"
-              style={{
-                width: "100px",
-                backgroundColor: theme.palette.primary.sidebarSecondary,
-                color: "white",
-              }}
-            >
-              Submit
-            </Button>
-          </Item>
+          ) : (
+            <Item p={3} pt={1}>
+              {selectedTab.Components}
+            </Item>
+          )}
         </form>
       </Card>
     </Container>

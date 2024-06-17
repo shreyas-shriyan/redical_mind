@@ -27,6 +27,26 @@ const styles = (theme) => {
     table: {
       border: "1px solid grey",
     },
+
+    tabContainer: {
+      display: "flex",
+      gap: "5px",
+      flexWrap: "wrap",
+      justifyContent: "space-between",
+    },
+
+    tab: {
+      minWidth: "120px",
+      height: "50px",
+      padding: theme.spacing(1),
+      border: "1px solid grey",
+      borderRadius: "10px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      fontSize: "15px",
+    },
   };
 };
 

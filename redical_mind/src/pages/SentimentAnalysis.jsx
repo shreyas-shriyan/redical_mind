@@ -181,17 +181,18 @@ const Home = ({ classes }) => {
     "Issues, Actions, Outcomes",
   ];
   const CardsData = [
-    { name: "Total Calls Today", value: 13546 },
-    { name: "Avg Handle Time", value: 603 },
-    { name: "Interactions Answered", value: 10910 },
-    { name: "Answered Within SL", value: 9239 },
-    { name: "Service Level", value: "68%" },
-    { name: "Abondoned Rate", value: "19%" },
+    { name: "Total Calls Today", value: 0 },
+    { name: "Avg Handle Time", value: 0 },
+    { name: "Interactions Answered", value: 0 },
+    { name: "Answered Within SL", value: 0 },
+    { name: "Service Level", value: 0 },
+    { name: "Abondoned Rate", value: 0 },
   ];
 
   const [selectedFilter, setSelectedFilter] = useState("Sentiment");
   const [selectedValue, setSelectedValue] = useState("Today");
   const [graphData, setGraphData] = useState(sentimateData);
+  const [cardData, setCardData] = useState(CardsData);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -219,6 +220,17 @@ const Home = ({ classes }) => {
     } else {
       setGraphData(sentimateDataByYear);
     }
+  };
+
+  const handleSubmit = () => {
+    setCardData([
+      { name: "Total Calls Today", value: 13546 },
+      { name: "Avg Handle Time", value: 603 },
+      { name: "Interactions Answered", value: 10910 },
+      { name: "Answered Within SL", value: 9239 },
+      { name: "Service Level", value: "68%" },
+      { name: "Abondoned Rate", value: "19%" },
+    ]);
   };
 
   return (
@@ -296,7 +308,7 @@ const Home = ({ classes }) => {
           justifyContent: "space-between",
         }}
       >
-        {CardsData?.map((item, index) => {
+        {cardData?.map((item, index) => {
           return (
             <Item mt={3} md={3} lg={1.9} xs={5.8}>
               <CallDetailsCard data={item} />
@@ -305,7 +317,7 @@ const Home = ({ classes }) => {
         })}
       </Item>
       <Item xs={12} lg={12} md={12} mt={2}>
-        <ProcessCell />
+        <ProcessCell handleSubmit={handleSubmit} />
       </Item>
       <Item
         md={12}

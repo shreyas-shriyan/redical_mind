@@ -9,7 +9,7 @@ import theme from "./utils/theme";
 import SentimentAnalysis from "./pages/SentimentAnalysis";
 import ExecutiveOverview from "./pages/ExecutiveOverview";
 import FTERequires from "./pages/FTERequires";
-import CallVolume from "./pages/CallVolume";
+import CallVolume from "./pages/CallVolume/CallVolume";
 import AvarageHoldTime from "./pages/AvarageHoldTime";
 import ScheduleShrinkage from "./pages/ScheduleShrinkage";
 import Occupancy from "./pages/Occupancy";

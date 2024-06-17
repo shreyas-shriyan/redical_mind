@@ -8,11 +8,12 @@ const FilterButton = ({ name, handleFilter, selectedFilter }) => {
       style={{
         border: `1px solid ${theme.palette.primary.sidebarSecondary}`,
         borderRadius: "10px",
-        padding: "4px 10px",
+        padding: "10px 10px",
         display: "flex",
         justifyContent: "center",
         alignContent: "center",
         fontSize: "14px",
+        minWidth:'100px',
         fontWeight: "500",
         cursor: "pointer",
         backgroundColor:
