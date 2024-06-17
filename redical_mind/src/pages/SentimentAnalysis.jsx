@@ -7,7 +7,7 @@ import UserTable from "../Table/UserTable";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ResponsivePie } from "@nivo/pie";
 import theme from "../utils/theme";
-
+import ProcessCell from "./ProcessCell/ProcessCell";
 const {
   withStyles,
   Grid,
@@ -231,7 +231,7 @@ const Home = ({ classes }) => {
           display: "flex",
           gap: "10px",
           alignItems: "center",
-          justifyContent: "space-between",
+          // justifyContent: "space-between",
         }}
       >
         <Item
@@ -240,6 +240,7 @@ const Home = ({ classes }) => {
             gap: "10px",
             flexWrap: "wrap",
             alignItems: "center",
+            ml: "auto",
           }}
         >
           {filterArray?.map((item, index) => {
@@ -302,6 +303,9 @@ const Home = ({ classes }) => {
             </Item>
           );
         })}
+      </Item>
+      <Item xs={12} lg={12} md={12} mt={2}>
+        <ProcessCell />
       </Item>
       <Item
         md={12}
@@ -389,7 +393,7 @@ const Home = ({ classes }) => {
       </Item>
 
       <Item md={12} xs={12} lg={12} mt={2} sx={{ width: "360px" }}>
-        <UserTable />
+        <UserTable status={true} />
       </Item>
     </Container>
   );

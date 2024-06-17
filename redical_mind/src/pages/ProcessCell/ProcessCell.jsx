@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Components } from "../utils/materialUI";
-import styles from "./styles";
-import theme from "../utils/theme";
+import { Components } from "../../utils/materialUI";
+import styles from "../styles";
+import theme from "../../utils/theme";
 import { Button } from "@mui/material";
-import CallAuditTable from "../Table/CallAuditTable";
+// import CallAuditTable from "../Table/CallAuditTable";
+import UserTable from "../../Table/UserTable";
 
 const {
   withStyles,
@@ -54,7 +55,7 @@ const StatusArray = ["NANQUE"];
 const TermArray = ["NOAGENT"];
 const LeadArray = ["5757681"];
 
-const ProcessCell = ({ classes }) => {
+const ProcessCell = ({ classes, handleSubmit }) => {
   const [postData, setPostData] = useState({
     callType: "",
     campaign: "",
@@ -73,7 +74,7 @@ const ProcessCell = ({ classes }) => {
   };
 
   const handlePostData = () => {
-    console.log("postData", postData);
+    handleSubmit();
   };
 
   return (
@@ -170,7 +171,7 @@ const ProcessCell = ({ classes }) => {
             </FormControl>
           </Item>
 
-          <Item mt={1} lg={3.8} xs={12} md={5.8}>
+          {/* <Item mt={1} lg={3.8} xs={12} md={5.8}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label" size="small">
                 Date
@@ -205,7 +206,7 @@ const ProcessCell = ({ classes }) => {
                 })}
               </Select>
             </FormControl>
-          </Item>
+          </Item> */}
           <Item mt={1} lg={3.8} xs={12} md={5.8}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label" size="small">
@@ -352,11 +353,19 @@ const ProcessCell = ({ classes }) => {
               </Select>
             </FormControl>
           </Item>
-          <Item mt={1} lg={3.8} xs={12} md={5.8}>
+          {/* <Item mt={1} lg={3.8} xs={12} md={5.8}></Item> */}
+
+          <Item
+            mt={1}
+            lg={12}
+            xs={12}
+            md={12}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
             <Button
               onClick={handlePostData}
               style={{
-                width: "50%",
+                width: "180px",
                 backgroundColor: theme.palette.primary.sidebarSecondary,
                 color: "white",
               }}
@@ -364,12 +373,9 @@ const ProcessCell = ({ classes }) => {
               Submit
             </Button>
           </Item>
-          <Item mt={1} lg={3.8} xs={12} md={5.8}></Item>
+          {/* <Item mt={1} lg={3.8} xs={12} md={5.8}></Item> */}
         </Item>
       </Card>
-      <Item md={12} xs={12} lg={12} mt={2} sx={{ width: "360px" }}>
-        <CallAuditTable />
-      </Item>
     </Container>
   );
 };

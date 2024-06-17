@@ -6,7 +6,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import PublicRoute from "./components/PublicRoute";
 import NotFound from "./pages/NotFound";
 import theme from "./utils/theme";
-import ProcessCell from "./pages/ProcessCell";
 import SentimentAnalysis from "./pages/SentimentAnalysis";
 import ExecutiveOverview from "./pages/ExecutiveOverview";
 import FTERequires from "./pages/FTERequires";
@@ -17,6 +16,7 @@ import Occupancy from "./pages/Occupancy";
 import HeadCount from "./pages/HeadCount";
 import PlanningView from "./pages/PlanningView";
 import ViewFileName from "./pages/ViewFileName";
+import ProcessCell from "./pages/ProcessCell/index";
 
 function App() {
   return (

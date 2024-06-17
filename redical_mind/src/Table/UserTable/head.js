@@ -10,9 +10,9 @@ const head = [
   {
     id: "fileName",
     label: "File Name",
-    minWidth: 140,
-    width: 140,
-    maxWidth: 140,
+    minWidth: 160,
+    width: 160,
+    maxWidth: 160,
     align: "center",
   },
   {
