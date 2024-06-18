@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Components } from "../utils/materialUI";
 import styles from "./styles";
 import theme from "../utils/theme";
-import { Button, selectClasses } from "@mui/material";
+import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 import ChatConversion from "./ProcessCell/ChatConversion";
+import Summary from "./ProcessCell/summary";
+import Issue from "./ProcessCell/Issue";
+import SentimentScore from "./ProcessCell/SentimentScore";
+import data from "./ProcessCell/ravi_english_bad.json";
 
 const {
   withStyles,
@@ -30,9 +34,13 @@ const tabArray = [
     value: "callTranscript",
     Components: <ChatConversion />,
   },
-  { name: "Call Summary", value: "callSummary", Components: "call Summary" },
-  { name: "Issue", value: "issue", Components: "issue" },
-  { name: "Sentiment Score", value: "sentimentScore", Components: "bdsnvc" },
+  { name: "Call Summary", value: "callSummary", Components: <Summary /> },
+  { name: "Issue Remarks Resolution", value: "issue", Components: <Issue /> },
+  {
+    name: "Sentiment Score",
+    value: "sentimentScore",
+    Components: <SentimentScore />,
+  },
   { name: "QA Score Card", value: "QAScoreCard", Components: "" },
 ];
 
@@ -41,47 +49,134 @@ const ViewFileName = ({ classes }) => {
   const [selectedTab, setSelectedTab] = useState(tabArray[0]);
 
   const [postData, setPostData] = useState({
-    user: "Ghanshyam",
+    user: "Ravi",
     rmID: "RM7025719",
     leadID: "5740950",
-    startDateTime: "2024-06-09 08:59:19",
+    startDateTime: "2024-06-18 13:34:2",
     audioClipName:
       "https://jk.radicalminds.in/RECORDINGS/MP3/5740950_20240609-085918_CTSWELC_RM7025719_7220030018-all.mp3",
     sectionScores: "80%",
     customerExperienceScore: "90%",
     processAdherenceScore: "60%",
-    agentTranscription:
-      "Good afternoon, my name is Ravi, I am calling from Make My Trip So, like you have requested for the cancellation, I have tried to convince the hotel as well as the area manager, the both have denied sir And also they have shared the mail that you have ordered the food and you are going to stay at hotel, right sir? So sir, I have tried to convince the hotel but they have denied sir, so your refund cannot be possible sir Okay sir, apart from this, can I help you any other thing sir? Sir, after the cancellation policy as I told you sir, it totally depends on the hotel decision sir If they agree, then only I can cancel the booking and provide the refund sir But as they have shared the denial in the mail In the mail sir, so I am very sorry for that sir What they are telling? Booking is not there? Food is not there? Okay sir, like I have told you like they have denied sir Sir, like they said in the mail, you have ordered for lunch also, right? Okay sir, I am just reconfirming from the hotel Can I please place a call and hold for two minutes? inform sir they are they are denied for the cancellation sir so like yes sir so apart from this can I help you in any other thing sir this is the only help I need but they have denied as I told you sir already like yes sir hotel has denied for the cancellation sir that's what I'm telling yes sir so thank you with connecting with us sir",
-    customerTranscription:
-      "Hello Yeah No, no, no, but they are telling that food is not there Yes sir They told that food is not there That's what now, they told food is not there and we came out for food What will help you sir, other than this? They will do that only because they are telling food is not there They told that, no, no, food is not there they said Sir, I am not able to hear you sir Food is not there they said Yes Okay Okay sir, like I have told you like they have denied sir No, they are saying food is not there, you are telling, I am saying You ask them no, if they provided food or not They will provide food or not? You ask them whether they have provided food or not They said food is not there They have ordered lunch also, right? They have ordered lunch also, right? Can I please place a call and hold for two minutes? Yes, yes    has provided the company I'm not able to connect so that I just wanted to we did not order it we asked them then they said it's not there yes sir yes sir sir ype you",
-    issueType: "Modify Flight Booking",
-    subIssueType: "Upgrade to Business Class",
+    agentTranscription: "",
+    customerTranscription: "",
+    issueType: "",
+    subIssueType: "",
     contactNumber: "7220030018",
     week: "Week-1",
-    feedbackDate: "2024-12-20",
-    description: "Hello Yeah No",
+    feedbackDate: "2024-06-18",
+    description: "",
+    nonFatalScore: "100",
+    fatalCount: "0",
+    qaScore: "28/35",
   });
+
+  useEffect(() => {
+    const resultData = data?.qa;
+
+    setPostData({
+      ...postData,
+      sectionScores: `${resultData?.scores?.[0]}%`,
+      customerExperienceScore: `${resultData?.scores?.[1]}%`,
+      processAdherenceScore: `${resultData?.scores?.[2]}%`,
+      issueType: resultData?.issue_type,
+      subIssueType: resultData?.sub_issue_type,
+      agentTranscription: data?.Agent?.transcription,
+      customerTranscription: data?.Customer?.transcription,
+    });
+    // const resultQues = Object?.keys(data?.qa_plain)?.map((item, index) => {
+    //   console.log(index);
+    //   if (index > 12) {
+    //     return {
+    //       name: data?.qa_plain[`ques${index + 1}`],
+    //       value: "",
+    //       description: "",
+    //     };
+    //   }
+    // });
+    // setQuestions(resultQues);
+  }, []);
 
   const [Questions, setQuestions] = useState([
     {
-      name: "Did the associate used standard opening and closing statement?",
-      value: "",
-      description: "",
+      name: "Did the associate utilize the typical salutations and closing remarks ?",
+      value: "Yes",
+      description: "3",
     },
     {
-      name: "Did the associate used correct sentence framing, grammar, spelling, caps function, there is no uneven font or unnecessary spacing? Did the associate removed the xxx, brackets,multiple information metrics data etc. while putting the variable value? Also there were no usage of internal process related terms which are not known to the DP's? Did the associate used only one language to write the overall reply?",
-      value: "",
-      description: "",
+      name: "Did the associate employ proper sentence structure, grammar, spelling, capitalization, and absence of erroneous spacing or uneven font? When entering the variable value, did the associate delete the brackets, numerous information metrics data, etc.? Furthermore, no phrases linked to internal processes that the DPs are unfamiliar with were used? Did the associate compose the entire response in a single language?",
+      value: "Yes",
+      description: "5",
     },
     {
-      name: "Did the associate used the correct language to reply?",
-      value: "",
-      description: "",
+      name: "Did the associate respond using the appropriate language ?",
+      value: "Yes",
+      description: "3",
     },
     {
-      name: "Fresh ticket - Did the associate used the correct canned response to reply? Was the reply scenario based? Reopen ticket - Did the associate self drafted the response as per the scenario and query of DP? [copy pasted previous response will be treated as fatal]",
-      value: "",
-      description: "",
+      name: "New ticket: Did the associate write the response on their own in accordance with the delivery person's question and scenario ?",
+      value: "No",
+      description: "0",
+    },
+    {
+      name: "Did the associate pose the pertinent queries to determine the underlying cause? It is not required to probe ?",
+      value: "Yes",
+      description: "5",
+    },
+    {
+      name: "Did the associate respond to the delivery person's inquiry with all the information needed? Did the associate give accurate information regarding the amount, due date, week, RRN, and order ID? Is the real question answered? False claims like 'technical issue' or 'unable to fetch the details' weren't made",
+      value: "No",
+      description: "0",
+    },
+    {
+      name: "The ticket was not closed, reassigned, unassigned, or closed without a response.",
+      value: "Yes",
+      description: "3",
+    },
+    {
+      name: "Did the associate process a refund, escalate the matter, overturn a denial or dispute, etc.? Was the escalation or action truly necessary? Did the associate choose the appropriate component and make the correct inputs when escalating? several levels of escalation.Only respond by text;",
+      value: "Yes",
+      description: "0",
+    },
+    {
+      name: "Did the associate choose the appropriate course of action ?",
+      value: "Yes",
+      description: "3",
+    },
+    {
+      name: "Did the associate choose the appropriate tags ?",
+      value: "Yes",
+      description: "3",
+    },
+    {
+      name: "Was the ticket status accurately marked by the associate ? [Acquired/WOC]",
+      value: "Yes",
+      description: "3",
+    },
+    {
+      name: "Did the agent use profanity in the conversation ?",
+      value: "Yes",
+      description: "NON-FATAL",
+    },
+    {
+      name: "Was the agent unprofessional on the call ?",
+      value: "Yes",
+      description: "NON-FATAL",
+    },
+    {
+      name: "Did the agent use Rude/Commanding tone ? ",
+      value: "Yes",
+      description: "NON-FATAL",
+    },
+    {
+      name: "Did the agent updated CRM with relevant notes ?",
+      value: "Yes",
+      description: "NON-FATAL",
+    },
+    {
+      name: "Disposition not done ?",
+      value: "Yes",
+      description: "NON-FATAL",
     },
   ]);
 
@@ -105,17 +200,26 @@ const ViewFileName = ({ classes }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("postData", postData);
+    // console.log("postData", postData);
   };
+
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  }, []);
 
   const AudioPlayer = ({
     src,
     controls = true,
     autoPlay = false,
-    loop = false,
+    loop = true,
   }) => {
     return (
       <audio
+        ref={audioRef}
         controls={controls}
         autoPlay={autoPlay}
         loop={loop}
@@ -135,8 +239,9 @@ const ViewFileName = ({ classes }) => {
             sx={{
               textAlign: "center",
               p: 1,
-              border: "1px solid grey",
+              border: "2px solid lightGrey",
               fontWeight: "600",
+              backgroundColor: "#E8E8E8",
             }}
           >
             Section Scores
@@ -144,8 +249,10 @@ const ViewFileName = ({ classes }) => {
           <table
             style={{
               width: "100%",
-              border: "1px solid grey",
+              border: "2px solid lightGrey",
               textAlign: "center",
+
+              backgroundColor: "#E8E8E8",
             }}
           >
             <tr>
@@ -201,7 +308,9 @@ const ViewFileName = ({ classes }) => {
             <Item lg={2.8} xs={12} md={5.8}></Item>
 
             <Item mt={0.5} lg={4.8} xs={12} md={5.8}>
-              <AudioPlayer src={"horse.mp3"} />
+              <AudioPlayer
+                src={"/audio/Ravi call 2_1_7362834935053356829_1_80.wav"}
+              />
             </Item>
 
             <Item lg={2.8} xs={12} md={5.8}></Item>
@@ -337,7 +446,7 @@ const ViewFileName = ({ classes }) => {
 
           {selectedTab?.value === "QAScoreCard" ? (
             <Item>
-              <Item
+              {/* <Item
                 sx={{
                   width: "100vw",
                   display: "flex",
@@ -350,49 +459,8 @@ const ViewFileName = ({ classes }) => {
                 md={12}
                 p={3}
               >
-                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
-                  <TextField
-                    fullWidth
-                    id="outlined-basic"
-                    label="Section Scores"
-                    variant="outlined"
-                    size="small"
-                    value={postData?.sectionScores}
-                    onChange={(e) =>
-                      handleStateChnage("sectionScores", e.target.value)
-                    }
-                  />
-                </Item>
-                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
-                  <TextField
-                    fullWidth
-                    id="outlined-basic"
-                    label="Customer Experience Score"
-                    variant="outlined"
-                    size="small"
-                    value={postData?.customerExperienceScore}
-                    onChange={(e) =>
-                      handleStateChnage(
-                        "customerExperienceScore",
-                        e.target.value
-                      )
-                    }
-                  />
-                </Item>
-                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
-                  <TextField
-                    fullWidth
-                    id="outlined-basic"
-                    label="Process Adherence Score"
-                    variant="outlined"
-                    size="small"
-                    value={postData?.processAdherenceScore}
-                    onChange={(e) =>
-                      handleStateChnage("processAdherenceScore", e.target.value)
-                    }
-                  />
-                </Item>
-              </Item>
+               
+              </Item> */}
 
               <Item>
                 <SectionScore classes={classes} />
@@ -519,6 +587,88 @@ const ViewFileName = ({ classes }) => {
                     }
                   />
                 </Item>
+                <Item mt={6} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Section Scores"
+                    variant="outlined"
+                    size="small"
+                    value={postData?.sectionScores}
+                    onChange={(e) =>
+                      handleStateChnage("sectionScores", e.target.value)
+                    }
+                  />
+                </Item>
+                <Item mt={6} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Customer Experience Score"
+                    variant="outlined"
+                    size="small"
+                    value={postData?.customerExperienceScore}
+                    onChange={(e) =>
+                      handleStateChnage(
+                        "customerExperienceScore",
+                        e.target.value
+                      )
+                    }
+                  />
+                </Item>
+                <Item mt={6} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Process Adherence Score"
+                    variant="outlined"
+                    size="small"
+                    value={postData?.processAdherenceScore}
+                    onChange={(e) =>
+                      handleStateChnage("processAdherenceScore", e.target.value)
+                    }
+                  />
+                </Item>
+
+                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Fatal Count"
+                    variant="outlined"
+                    size="small"
+                    value={postData?.fatalCount}
+                    onChange={(e) =>
+                      handleStateChnage("fatalCount", e.target.value)
+                    }
+                  />
+                </Item>
+                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="Non Fatal Score"
+                    variant="outlined"
+                    size="small"
+                    value={postData?.nonFatalScore}
+                    onChange={(e) =>
+                      handleStateChnage("nonFatalScore", e.target.value)
+                    }
+                  />
+                </Item>
+                <Item mt={1.5} lg={3.8} xs={12} md={5.8}>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    label="QA Score"
+                    variant="outlined"
+                    size="small"
+                    value={postData?.qaScore}
+                    onChange={(e) =>
+                      handleStateChnage("qaScore", e.target.value)
+                    }
+                  />
+                </Item>
                 <Item mt={4} lg={12} xs={12} md={12}>
                   {Questions?.map((item, queIndex) => {
                     return (
@@ -589,7 +739,7 @@ const ViewFileName = ({ classes }) => {
                           <TextField
                             fullWidth
                             id="outlined-basic"
-                            label="Description"
+                            label="Weightage"
                             variant="outlined"
                             size="small"
                             value={item?.description}

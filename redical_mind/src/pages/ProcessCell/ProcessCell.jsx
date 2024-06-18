@@ -35,6 +35,8 @@ const CampaignArray = [
   "ENMarketingBrandin",
   "ENNewcustomer",
   "ENother",
+  "MakeMyTrip",
+  // "MakeMyTrip_Flight",
 ];
 
 const dateArray = [

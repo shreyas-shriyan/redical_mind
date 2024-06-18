@@ -193,6 +193,7 @@ const Home = ({ classes }) => {
   const [selectedValue, setSelectedValue] = useState("Today");
   const [graphData, setGraphData] = useState(sentimateData);
   const [cardData, setCardData] = useState(CardsData);
+  const [tableToggle, setTableToggle] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -223,6 +224,7 @@ const Home = ({ classes }) => {
   };
 
   const handleSubmit = () => {
+    setTableToggle(true);
     setCardData([
       { name: "Total Calls Today", value: 13546 },
       { name: "Avg Handle Time", value: 603 },
@@ -345,7 +347,7 @@ const Home = ({ classes }) => {
         </Item>
         <Item md={5.8} lg={3.9} xs={12} mt={2}>
           <Card className={classes.card} sx={{ ...theme.card }}>
-            {/* <Typography
+            <Typography
               className={classes.cardText}
               sx={{ fontWeight: "600", fontSize: "14px" }}
             >
@@ -353,12 +355,12 @@ const Home = ({ classes }) => {
             </Typography>
             <Item>
               <SentimateTodayGraph data={sentimateDataByWeek} />
-            </Item> */}
+            </Item>
           </Card>
         </Item>
         <Item md={5.8} lg={3.9} xs={12} mt={2}>
           <Card className={classes.card} sx={{ ...theme.card }}>
-            {/* <Typography
+            <Typography
               className={classes.cardText}
               sx={{ fontWeight: "600", fontSize: "14px" }}
             >
@@ -366,11 +368,11 @@ const Home = ({ classes }) => {
             </Typography>
             <Item>
               <SentimateTodayGraph data={sentimateDataByMonth} />
-            </Item> */}
+            </Item>
           </Card>
         </Item>
       </Item>
-      <Item
+      {/* <Item
         md={12}
         xs={12}
         lg={12}
@@ -402,11 +404,12 @@ const Home = ({ classes }) => {
             </Typography>
           </Card>
         </Item>
-      </Item>
-
-      <Item md={12} xs={12} lg={12} mt={2} sx={{ width: "360px" }}>
-        <UserTable status={true} />
-      </Item>
+      </Item> */}
+      {tableToggle && (
+        <Item md={12} xs={12} lg={12} mt={2} sx={{ width: "360px" }}>
+          <UserTable status={true} />
+        </Item>
+      )}
     </Container>
   );
 };

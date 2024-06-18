@@ -1,0 +1,448 @@
+{
+    "_id": {
+        "$oid": "664ee74fc685790e5fd865be"
+    },
+    "Customer": {
+        "transcription": [
+            "Hello Yeah No, no, no, but they are telling that food is not there Yes sir They told that food is not there That's what now, they told food is not there and we came out for food What will help you sir, other than this? They will do that only because they are telling food is not there They told that, no, no, food is not there they said Sir, I am not able to hear you sir Food is not there they said Yes Okay Okay sir, like I have told you like they have denied sir No, they are saying food is not there, you are telling, I am saying You ask them no, if they provided food or not They will provide food or not? You ask them whether they have provided food or not They said food is not there They have ordered lunch also, right? They have ordered lunch also, right? Can I please place a call and hold for two minutes? Yes, yes    has provided the company I'm not able to connect so that I just wanted to we did not order it we asked them then they said it's not there yes sir yes sir sir ype you"
+        ],
+        "SentimentScore": 0.11830357142857142,
+        "Subjectivity": 0.5870535714285714,
+        "SentimentType": "Positive"
+    },
+    "Agent": {
+        "transcription": [
+            "Good afternoon, my name is Ravi, I am calling from Make My Trip So, like you have requested for the cancellation, I have tried to convince the hotel as well as the area manager, the both have denied sir And also they have shared the mail that you have ordered the food and you are going to stay at hotel, right sir? So sir, I have tried to convince the hotel but they have denied sir, so your refund cannot be possible sir Okay sir, apart from this, can I help you any other thing sir? Sir, after the cancellation policy as I told you sir, it totally depends on the hotel decision sir If they agree, then only I can cancel the booking and provide the refund sir But as they have shared the denial in the mail In the mail sir, so I am very sorry for that sir What they are telling? Booking is not there? Food is not there? Okay sir, like I have told you like they have denied sir Sir, like they said in the mail, you have ordered for lunch also, right? Okay sir, I am just reconfirming from the hotel Can I please place a call and hold for two minutes? inform sir they are they are denied for the cancellation sir so like yes sir so apart from this can I help you in any other thing sir this is the only help I need but they have denied as I told you sir already like yes sir hotel has denied for the cancellation sir that's what I'm telling yes sir so thank you with connecting with us sir"
+        ],
+        "SentimentScore": 0.14395604395604394,
+        "Subjectivity": 0.667032967032967,
+        "SentimentType": "Positive"
+    },
+    "conversation": [
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:00:00",
+            "dialogue": " Hello"
+        },
+        {
+            "speaker": "Agent: Ravi Jain",
+            "timestamp": "0:00:02",
+            "dialogue": "Good afternoon, my name is Ravi, I am calling from Make My Trip"
+        },
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:00:06",
+            "dialogue": "Yeah"
+        },
+        {
+            "speaker": "Agent: Ravi Jain",
+            "timestamp": "0:00:08",
+            "dialogue": "So, like you have requested for the cancellation, I have tried to convince the hotel as well as the area manager, the both have denied sir And also they have shared the mail that you have ordered the food and you are going to stay at hotel, right sir?"
+        },
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:00:20",
+            "dialogue": "No, no, no, but they are telling that food is not there Yes sir They told that food is not there"
+        },
+        {
+            "speaker": "Agent: Ravi Jain",
+            "timestamp": "0:00:28",
+            "dialogue": "So sir, I have tried to convince the hotel but they have denied sir, so your refund cannot be possible sir"
+        },
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:00:34",
+            "dialogue": "That's what now, they told food is not there and we came out for food"
+        },
+        {
+            "speaker": "Agent: Ravi Jain",
+            "timestamp": "0:00:39",
+            "dialogue": "Okay sir, apart from this, can I help you any other thing sir?"
+        },
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:00:43",
+            "dialogue": "What will help you sir, other than this?"
+        },
+        {
+            "speaker": "Agent: Ravi Jain",
+            "timestamp": "0:00:46",
+            "dialogue": "Sir, after the cancellation policy as I told you sir, it totally depends on the hotel decision sir If they agree, then only I can cancel the booking and provide the refund sir But as they have shared the denial in the mail In the mail sir, so I am very sorry for that sir"
+        },
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:01:01",
+            "dialogue": "They will do that only because they are telling food is not there"
+        },
+        {
+            "speaker": "Agent: Ravi Jain",
+            "timestamp": "0:01:05",
+            "dialogue": "What they are telling? Booking is not there?"
+        },
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:01:08",
+            "dialogue": "They told that, no, no, food is not there they said Sir, I am not able to hear you sir Food is not there they said"
+        },
+        {
+            "speaker": "Agent: Ravi Jain",
+            "timestamp": "0:01:16",
+            "dialogue": "Food is not there?"
+        },
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:01:18",
+            "dialogue": "Yes Okay"
+        },
+        {
+            "speaker": "Agent: Ravi Jain",
+            "timestamp": "0:01:22",
+            "dialogue": "Okay sir, like I have told you like they have denied sir"
+        },
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:01:26",
+            "dialogue": "Okay sir, like I have told you like they have denied sir No, they are saying food is not there, you are telling, I am saying You ask them no, if they provided food or not They will provide food or not? You ask them whether they have provided food or not They said food is not there"
+        },
+        {
+            "speaker": "Agent: Ravi Jain",
+            "timestamp": "0:01:49",
+            "dialogue": "Sir, like they said in the mail, you have ordered for lunch also, right?"
+        },
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:01:56",
+            "dialogue": "They have ordered lunch also, right? They have ordered lunch also, right?"
+        },
+        {
+            "speaker": "Agent: Ravi Jain",
+            "timestamp": "0:02:00",
+            "dialogue": "Okay sir, I am just reconfirming from the hotel Can I please place a call and hold for two minutes?"
+        },
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:02:04",
+            "dialogue": "Can I please place a call and hold for two minutes? Yes, yes    has provided the company I'm not able to connect so that I just wanted to"
+        },
+        {
+            "speaker": "Agent: Ravi Jain",
+            "timestamp": "0:04:12",
+            "dialogue": "inform sir they are they are denied for the cancellation sir so like yes sir so apart from this can I help you in any other thing sir this is the only help I need but they have denied as I told you sir already"
+        },
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:04:31",
+            "dialogue": "we did not order it we asked them then they said it's not there yes sir yes sir"
+        },
+        {
+            "speaker": "Agent: Ravi Jain",
+            "timestamp": "0:04:51",
+            "dialogue": "like yes sir hotel has denied for the cancellation sir that's what I'm telling"
+        },
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:05:02",
+            "dialogue": "sir"
+        },
+        {
+            "speaker": "Agent: Ravi Jain",
+            "timestamp": "0:05:11",
+            "dialogue": "yes sir so thank you with connecting with us sir"
+        },
+        {
+            "speaker": "Customer: Abhishek",
+            "timestamp": "0:05:21",
+            "dialogue": "ype you"
+        }
+    ],
+    "description": {
+        "call_summary": [
+            "Ravi from MakeMyTrip is calling a customer regarding a hotel cancellation request.",
+            "The hotel and area manager have denied the cancellation request.",
+            "The hotel claims the customer ordered food and is going to stay there, but the customer disputes this and says they did not order food.",
+            "Ravi says he tried to convince the hotel but they will not allow cancellation or provide a refund due to their cancellation policy.",
+            "The customer insists Ravi check again with the hotel on whether food was ordered. Ravi says he is unable to reach the hotel.",
+            "Ravi reiterates that unfortunately the cancellation has been denied by the hotel so a refund cannot be provided.",
+            "The call ends with Ravi asking if he can assist the customer with anything else, but the customer says the cancellation/refund is the only help needed"
+        ],
+        "remarks": "The agent was polite but unable to resolve the customer's cancellation request as the hotel denied it, citing ordered food. The customer insisted food was not ordered. The issue remained unresolved.",
+        "resolution": "Agent may say the following to the customer: I apologize that the hotel refused to cancel or refund your booking despite not providing the food ordered. I will escalate this issue to management to resolve it React The customer's name is not provided. The agent's name is Ravi.",
+        "issue": [
+            "The customer requested a cancellation, but the hotel denied it. The agent was unable to get the cancellation approved.",
+            "There seems to be confusion around whether food/lunch was ordered or not. The customer says they did not order food, but the hotel claims they did. The agent was unable to get clarification on this.",
+            "The agent put the customer on hold to reconfirm with the hotel, but was unable to connect with them. The customer had to wait on hold without resolution.",
+            "Overall, the agent was unable to resolve the customer's request for cancellation. The call ended without a satisfactory resolution for the customer.",
+            "There appears to be a communication gap, with the customer and agent unable to understand each other at some points.",
+            "The agent could have been more empathetic to the customer's situation and frustration over the lack of cancellation/refund.",
+            "More effort could have been made to find a mutually acceptable solution, like partial refund, voucher, rebooking, etc."
+        ]
+    },
+    "sentiment": {
+        "brief": "The caller seems frustrated and dissatisfied with the service, indicating a negative sentiment. The agent appears to be apologizing and attempting to assist, but is unable to provide a resolution, leading to further frustration for the caller.",
+        "score": {
+            "Negative": 0.8,
+            "Positive": 0.1,
+            "Neutral": 0.1
+        },
+        "bag_of_words": {
+            "Angry Words": [
+                "denying",
+                "denied",
+                "cannot",
+                "not there",
+                "no"
+            ],
+            "Neutral Words": [
+                "afternoon",
+                "name",
+                "calling",
+                "requested",
+                "tried",
+                "shared",
+                "told",
+                "reconfirming",
+                "inform",
+                "help"
+            ],
+            "Happy Words": [
+                "good",
+                "appreciate",
+                "patience",
+                "thank",
+                "connecting"
+            ]
+        },
+        "analysis": "The high negative score reflects the caller's dissatisfaction and unresolved issue. The low positive and neutral scores indicate there were minimal positive or neutral statements. Overall, the transcript conveys a strongly negative sentiment from the customer's perspective."
+    },
+    "qa": {
+        "customer_experience": {
+            "Call Control": [
+                {
+                    "Call Opening": [
+                        {
+                            "Did the associate utilize the typical salutations and closing remarks? Just provide a number in response—3 if you agree, 0 otherwise.": "3"
+                        },
+                        {
+                            "Did the associate employ proper sentence structure, grammar, spelling, capitalization, and absence of erroneous spacing or uneven font? When entering the variable value, did the associate delete the brackets, numerous information metrics data, etc.? Furthermore, no phrases linked to internal processes that the DPs are unfamiliar with were used? Did the associate compose the entire response in a single language? Just provide a number in response—5 if you agree, 0 otherwise": "5"
+                        },
+                        {
+                            "Did the associate respond using the appropriate language?Just provide a number in response—3 if you agree, 0 otherwise": "3"
+                        }
+                    ],
+                    "Call Closing": [
+                        {
+                            "Did the associate utilize the typical salutations and closing remarks? Just provide a number in response—3 if you agree, 0 otherwise.": "3"
+                        },
+                        {
+                            "Did the associate utilize the typical salutations and closing remarks? Just provide a number in response—3 if you agree, 0 otherwise.": "3"
+                        },
+                        {
+                            "Did the associate utilize the typical salutations and closing remarks? Just provide a number in response—3 if you agree, 0 otherwise.": "3"
+                        }
+                    ],
+                    "Department": [
+                        {
+                            "Did the associate utilize the typical salutations and closing remarks? Just provide a number in response—3 if you agree, 0 otherwise.": "3"
+                        }
+                    ],
+                    "Paraphrasing": [
+                        {
+                            "Did the associate utilize the typical salutations and closing remarks? Just provide a number in response—3 if you agree, 0 otherwise.": "3"
+                        },
+                        {
+                            "Did the associate utilize the typical salutations and closing remarks? Just provide a number in response—3 if you agree, 0 otherwise.": "3"
+                        }
+                    ],
+                    "Call Avoidance": [
+                        {
+                            "Did the associate choose the appropriate tags?Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        },
+                        {
+                            "Did the associate choose the appropriate tags?Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        }
+                    ]
+                }
+            ],
+            "Soft Skills": [
+                {
+                    "Tone & Courtesy": [
+                        {
+                            "Did the associate utilize the typical salutations and closing remarks? Just provide a number in response—3 if you agree, 0 otherwise.": "3"
+                        },
+                        {
+                            "Did the associate employ proper sentence structure, grammar, spelling, capitalization, and absence of erroneous spacing or uneven font? When entering the variable value, did the associate delete the brackets, numerous information metrics data, etc.? Furthermore, no phrases linked to internal processes that the DPs are unfamiliar with were used? Did the associate compose the entire response in a single language? Just provide a number in response—5 if you agree, 0 otherwise": "5"
+                        },
+                        {
+                            "Did the associate respond using the appropriate language?Just provide a number in response—3 if you agree, 0 otherwise": "3"
+                        },
+                        {
+                            "Did the associate pose the pertinent queries to determine the underlying cause? It is not required to probe?Just provide a number in response—3 if you agree, and 5 otherwise": "5"
+                        },
+                        {
+                            "The ticket was not closed, reassigned, unassigned, or closed without a response. Simply respond with a '3'": "3"
+                        }
+                    ],
+                    "Active Listening and Effective Communication": [
+                        {
+                            "Did the associate utilize the typical salutations and closing remarks? Just provide a number in response—3 if you agree, 0 otherwise.": "3"
+                        },
+                        {
+                            "Did the associate employ proper sentence structure, grammar, spelling, capitalization, and absence of erroneous spacing or uneven font? When entering the variable value, did the associate delete the brackets, numerous information metrics data, etc.? Furthermore, no phrases linked to internal processes that the DPs are unfamiliar with were used? Did the associate compose the entire response in a single language? Just provide a number in response—5 if you agree, 0 otherwise": "5"
+                        },
+                        {
+                            "Did the associate respond using the appropriate language?Just provide a number in response—3 if you agree, 0 otherwise": "3"
+                        },
+                        {
+                            "Did the associate pose the pertinent queries to determine the underlying cause? It is not required to probe?Just provide a number in response—3 if you agree, and 5 otherwise": "5"
+                        },
+                        {
+                            "The ticket was not closed, reassigned, unassigned, or closed without a response. Simply respond with a '3'": "3"
+                        }
+                    ],
+                    "Reassurance/Empathy": [
+                        {
+                            "Did the associate utilize the typical salutations and closing remarks? Just provide a number in response—3 if you agree, 0 otherwise.": "3"
+                        },
+                        {
+                            "Did the associate employ proper sentence structure, grammar, spelling, capitalization, and absence of erroneous spacing or uneven font? When entering the variable value, did the associate delete the brackets, numerous information metrics data, etc.? Furthermore, no phrases linked to internal processes that the DPs are unfamiliar with were used? Did the associate compose the entire response in a single language? Just provide a number in response—5 if you agree, 0 otherwise": "5"
+                        }
+                    ],
+                    "Hold Protocol and Dead Air": [
+                        {
+                            "Did the associate respond to the delivery person's inquiry with all the information needed? Did the associate give accurate information regarding the amount, due date, week, RRN, and order ID? Is the real question answered? False claims like 'technical issue' or 'unable to fetch the details' weren't made.Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        },
+                        {
+                            "The ticket was not closed, reassigned, unassigned, or closed without a response. Simply respond with a '3'": "3"
+                        },
+                        {
+                            "Did the associate pose the pertinent queries to determine the underlying cause? It is not required to probe?Just provide a number in response—3 if you agree, and 5 otherwise": "5"
+                        },
+                        {
+                            "Did the associate pose the pertinent queries to determine the underlying cause? It is not required to probe?Just provide a number in response—3 if you agree, and 5 otherwise": "5"
+                        },
+                        {
+                            "Did the associate respond to the delivery person's inquiry with all the information needed? Did the associate give accurate information regarding the amount, due date, week, RRN, and order ID? Is the real question answered? False claims like 'technical issue' or 'unable to fetch the details' weren't made.Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        }
+                    ],
+                    "Professional Throughout the Call": [
+                        {
+                            "Did the associate choose the appropriate tags?Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        },
+                        {
+                            "Used profanity. Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        },
+                        {
+                            "Did the associate choose the appropriate course of action?Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        }
+                    ]
+                }
+            ]
+        },
+        "process_adherence": {
+            "Procedure": [
+                {
+                    "Effective & Relative Probing": [
+                        {
+                            "Did the associate utilize the typical salutations and closing remarks? Just provide a number in response—3 if you agree, 0 otherwise.": "3"
+                        },
+                        {
+                            "Did the associate employ proper sentence structure, grammar, spelling, capitalization, and absence of erroneous spacing or uneven font? When entering the variable value, did the associate delete the brackets, numerous information metrics data, etc.? Furthermore, no phrases linked to internal processes that the DPs are unfamiliar with were used? Did the associate compose the entire response in a single language? Just provide a number in response—5 if you agree, 0 otherwise": "5"
+                        },
+                        {
+                            "Did the associate respond using the appropriate language?Just provide a number in response—3 if you agree, 0 otherwise": "3"
+                        }
+                    ],
+                    "Gave Correct & Complete Information": [
+                        {
+                            "Did the associate choose the appropriate tags?Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        },
+                        {
+                            "Used profanity. Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        },
+                        {
+                            "Did the associate choose the appropriate course of action?Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        },
+                        {
+                            "Did the associate respond to the delivery person's inquiry with all the information needed? Did the associate give accurate information regarding the amount, due date, week, RRN, and order ID? Is the real question answered? False claims like 'technical issue' or 'unable to fetch the details' weren't made.Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        }
+                    ],
+                    "Disposition": [
+                        {
+                            "Did the associate respond to the delivery person's inquiry with all the information needed? Did the associate give accurate information regarding the amount, due date, week, RRN, and order ID? Is the real question answered? False claims like 'technical issue' or 'unable to fetch the details' weren't made.Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        },
+                        {
+                            "Did the associate choose the appropriate course of action?Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        }
+                    ],
+                    "Documentation": [
+                        {
+                            "Did the associate choose the appropriate tags?Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        },
+                        {
+                            "Used profanity. Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        },
+                        {
+                            "Did the associate choose the appropriate course of action?Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise": "NON-FATAL"
+                        }
+                    ]
+                }
+            ]
+        },
+        "overall_remarks": {
+            "Remarks": [
+                {
+                    "AdherenceScore": ""
+                },
+                {
+                    "FatalCount": ""
+                },
+                {
+                    "Non FatalScore%": ""
+                },
+                {
+                    "CQ%": ""
+                }
+            ]
+        },
+        "scores": [
+            80,
+            40,
+            100
+        ],
+        "issue_type": "Hotel Booking Cancellation",
+        "sub_issue_type": "Cancellation not approved by hotel"
+    },
+    "qa_plain": {
+        "ques1": "Did the associate utilize the typical salutations and closing remarks? Just provide a number in response\u20143 if you agree, 0 otherwise.",
+        "ans1": "\n 3",
+        "ques2": "Did the associate employ proper sentence structure, grammar, spelling, capitalization, and absence of erroneous spacing or uneven font? When entering the variable value, did the associate delete the brackets, numerous information metrics data, etc.? Furthermore, no phrases linked to internal processes that the DPs are unfamiliar with were used? Did the associate compose the entire response in a single language? Just provide a number in response\u20145 if you agree, 0 otherwise",
+        "ans2": "\n 5",
+        "ques3": "Did the associate respond using the appropriate language?Just provide a number in response\u20143 if you agree, 0 otherwise",
+        "ans3": "\n 3",
+        "ques4": "New ticket: Did the associate write the response on their own in accordance with the delivery person's question and scenario? Pasting a copy of a previous response will be deemed fatal. Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise",
+        "ans4": "\n FATAL",
+        "ques5": "Did the associate pose the pertinent queries to determine the underlying cause? It is not required to probe?Just provide a number in response\u20143 if you agree, and 5 otherwise",
+        "ans5": "\n 5",
+        "ques6": "Did the associate respond to the delivery person's inquiry with all the information needed? Did the associate give accurate information regarding the amount, due date, week, RRN, and order ID? Is the real question answered? False claims like 'technical issue' or 'unable to fetch the details' weren't made.Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise",
+        "ans6": "\n NON-FATAL",
+        "ques7": "The ticket was not closed, reassigned, unassigned, or closed without a response. Simply respond with a '3'",
+        "ans7": "\n 3",
+        "ques8": "Did the associate process a refund, escalate the matter, overturn a denial or dispute, etc.? Was the escalation or action truly necessary? Did the associate choose the appropriate component and make the correct inputs when escalating? several levels of escalation.Only respond by text; if you agree, it would be NON-FATAL; if not, it will be FATAL",
+        "ans8": "\n Based on the transcript, the associate did not process a refund or overturn a denial\/dispute. The associate explained multiple times that the booking was non-refundable per the cancellation policy and that after check-in, most hotels do not allow cancellation. The associate offered to contact the hotel if the customer could provide photos showing issues with the room, but did not actually escalate or take any action yet. The escalation does not seem necessary at this point since the customer has not checked in yet or provided any evidence of issues. The associate appears to be following policy correctly.",
+        "ques9": "Did the associate choose the appropriate course of action?Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise",
+        "ans9": "\n NON-FATAL",
+        "ques10": "Did the associate choose the appropriate tags?Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise",
+        "ans10": "\n NON-FATAL",
+        "ques11": "Was the ticket status accurately marked by the associate? [Acquired\/WOC]. Just provide a number in response\u20143 if you agree, 0 otherwise",
+        "ans11": "\n I do not have enough context to determine if the ticket status was accurately marked. The transcript does not contain information about the ticket status.",
+        "ques12": "Used profanity. Simply respond with one word: NON-FATAL if you disagree, and FATAL otherwise",
+        "ans12": "\n NON-FATAL"
+    },
+    "file_info": {
+        "file_name": "Ravi call 2_1_7362834935053356829_1_80.wav",
+        "call_duration": 331.408,
+        "language_detected": "",
+        "date": "05-06-24 05:51:2",
+        "src": "/audio/Ravi call 2_1_7362834935053356829_1_80.wav"
+    }
+}

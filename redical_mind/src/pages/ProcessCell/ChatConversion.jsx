@@ -1,6 +1,6 @@
 import React from "react";
 import { Components } from "../../utils/materialUI";
-import data from "./data.json";
+import data from "./ravi_english_bad.json";
 import styles from "./styles";
 import { Typography } from "@mui/material";
 import theme from "../../utils/theme";
@@ -49,19 +49,19 @@ const ChatConversion = ({ classes }) => {
                 Call With Abhishek
               </Typography>
               <Typography sx={{ fontSize: "12px" }}>
-                Ravi Jain Answered 9.58
+                Ravi Jain Answered 1:34 PM
               </Typography>
-              <Typography
+              {/* <Typography
                 mt={0.5}
                 sx={{ fontSize: "12px", textAlign: "center" }}
               >
-                Today 9:28 AM
-              </Typography>
+                Today 1:34 PM
+              </Typography> */}
             </Item>
           </Item>
         </Item>
       </Item>
-      <Item className={classes.chatConatiner} mt={2}>
+      <Item className={classes.chatConatiner} mt={3}>
         {data?.conversation?.map((item, index) => {
           return (
             <Item lg={12} xs={12} md={12} sx={{ display: "flex" }}>
@@ -69,7 +69,7 @@ const ChatConversion = ({ classes }) => {
                 lg={5.5}
                 xs={6}
                 md={5.5}
-                mt={1.5}
+                // mt={0.5}
                 sx={{
                   ml: index % 2 === 1 && "auto",
                   height: "auto",
@@ -90,6 +90,16 @@ const ChatConversion = ({ classes }) => {
                   <Typography sx={{ fontSize: "13px", fontWeight: "600" }}>
                     {item?.speaker}
                   </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "12px",
+                      fontWeight: "600",
+                      ml: "auto",
+                      mr: 1,
+                    }}
+                  >
+                    {item?.timestamp}
+                  </Typography>
                 </Item>
                 <Item
                   lg={12}
@@ -101,15 +111,6 @@ const ChatConversion = ({ classes }) => {
                 >
                   <Typography sx={{ fontSize: "15px" }}>
                     {item?.dialogue}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontSize: "12px",
-                      fontWeight: "600",
-                      textAlign: "right",
-                    }}
-                  >
-                    {item?.timestamp}
                   </Typography>
                 </Item>
               </Item>

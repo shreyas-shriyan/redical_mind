@@ -152,17 +152,25 @@ const RiskEvaluationTable = ({ classes, status = false }) => {
     }
   };
 
-  let audio = new Audio("/demo.mp3");
-  const handlePlayAudio = () => {
-    audio.play();
-    audio.currentTime = 0;
-    setAudioStatus(true);
+  const [playingIndex, setPlayingIndex] = useState(null);
+  const [audio, setAudio] = useState(null);
+
+  const handlePlayAudio = (index, src) => {
+    if (playingIndex !== null && playingIndex !== index && audio) {
+      audio.pause();
+    }
+
+    let newAudio = new Audio(src);
+    newAudio.play();
+    setAudio(newAudio);
+    setPlayingIndex(index);
   };
 
   const handlePause = () => {
-    if (audioStatus === true) {
+    if (audio) {
       audio.pause();
-      setAudioStatus(false);
+      setPlayingIndex(null);
+      setAudio(null);
     }
   };
 
@@ -376,7 +384,10 @@ const RiskEvaluationTable = ({ classes, status = false }) => {
                                             .sidebarSecondary,
                                       }}
                                     >
-                                      {row?.FileInfo?.FileName?.[0]}
+                                      {row?.FileInfo?.FileName?.[0]?.slice(
+                                        0,
+                                        11
+                                      )}
                                     </Typography>
                                   </StyledTableCell>
                                 );
@@ -389,7 +400,7 @@ const RiskEvaluationTable = ({ classes, status = false }) => {
                                     key={column.id}
                                   >
                                     <div>
-                                      {audioStatus ? (
+                                      {playingIndex === rowIndex ? (
                                         <PauseCircleFilledSharpIcon
                                           onClick={handlePause}
                                           sx={{
@@ -402,7 +413,12 @@ const RiskEvaluationTable = ({ classes, status = false }) => {
                                         />
                                       ) : (
                                         <PlayCircleFilledSharpIcon
-                                          onClick={handlePlayAudio}
+                                          onClick={() => {
+                                            handlePlayAudio(
+                                              rowIndex,
+                                              row?.FileInfo?.src
+                                            );
+                                          }}
                                           sx={{
                                             fontSize: "30px",
                                             color:

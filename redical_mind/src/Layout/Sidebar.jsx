@@ -11,8 +11,8 @@ const Sidebar = ({ open, onClose, drawerWidth }) => {
 
   const sidebarRoute = [
     { name: "Executive Overview", path: "/qms/executive-overview" },
-    { name: "Process Call", path: "/qms/process-calls" },
     { name: "Sentiment Analysis", path: "/qms/sentiment-analysis" },
+    { name: "Process Call", path: "/qms/process-calls" },
     // { name: "Home", path: "" },
     { name: "FTE Required", path: "/FTE-required" },
     { name: "Call Volume", path: "/call-volume" },

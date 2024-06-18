@@ -8,7 +8,7 @@ const styles = (theme) => {
     ChatConversionBox: {
       // display: "flex",
       flexDirection: "row",
-      border: "1px solid grey",
+      border: "2px solid lightGrey",
       height: "auto",
       borderRadius: "10px",
       justifyContent: "space-between",
