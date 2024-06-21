@@ -33,7 +33,7 @@ const head = [
   },
   {
     id: "audioFile",
-    label: "Call Duration (s)",
+    label: "Duration(s)",
     minWidth: 100,
     width: 100,
     maxWidth: 100,
@@ -102,6 +102,14 @@ const head = [
   {
     id: "customerSubjectivity",
     label: "Subjectivity",
+    minWidth: 100,
+    width: 100,
+    maxWidth: 100,
+    align: "center",
+  },
+  {
+    id: "qaScore",
+    label: "QA Score",
     minWidth: 100,
     width: 100,
     maxWidth: 100,

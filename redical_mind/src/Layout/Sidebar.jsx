@@ -1,6 +1,5 @@
 import React from "react";
 import { Drawer, List, ListItem, useMediaQuery } from "@mui/material";
-
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 
@@ -11,15 +10,11 @@ const Sidebar = ({ open, onClose, drawerWidth }) => {
 
   const sidebarRoute = [
     { name: "Executive Overview", path: "/qms/executive-overview" },
-    { name: "Sentiment Analysis", path: "/qms/sentiment-analysis" },
-    { name: "Process Call", path: "/qms/process-calls" },
-    // { name: "Home", path: "" },
-    { name: "FTE Required", path: "/FTE-required" },
+    { name: "QMS", paths: ["/qms/process-calls", "/qms/process-calls/view"] },
+    { name: "Agent Reporting", path: "/qms/sentiment-analysis" },
+    { name: "WFM", path: "/FTE-required" },
     { name: "Call Volume", path: "/call-volume" },
-    { name: "Average Hold Time", path: "/average-hold-Time" },
     { name: "Schedule Shrinkage", path: "/schedule-shrinkage" },
-    { name: "Occupancy", path: "/occupancy" },
-    { name: "Headcount", path: "/headcount" },
     { name: "Planning View", path: "/planning-view" },
   ];
 
@@ -31,12 +26,23 @@ const Sidebar = ({ open, onClose, drawerWidth }) => {
     fontWeight: 600,
     borderRadius: "6px",
   };
+
   const unSelectedObj = {
     fontSize: "13px",
     width: "170px",
     padding: "8px",
     fontWeight: 600,
     borderRadius: "6px",
+    color: theme.palette.primary.sidebar,
+  };
+
+  const isPathActive = (path, paths) => {
+    if (paths) {
+      return paths.some((p) =>
+        new RegExp(`^${p.replace(/\*/g, ".*")}$`).test(location.pathname)
+      );
+    }
+    return path === location.pathname;
   };
 
   return (
@@ -54,7 +60,7 @@ const Sidebar = ({ open, onClose, drawerWidth }) => {
             "& .MuiDrawer-paper": {
               width: drawerWidth,
               boxSizing: "border-box",
-              backgroundColor: theme.palette.primary.sidebar,
+              backgroundColor: theme.palette.primary.sidebarPrimary,
               color: theme.palette.primary.white,
             },
           }}
@@ -63,27 +69,25 @@ const Sidebar = ({ open, onClose, drawerWidth }) => {
             <ListItem component={Link} to="/">
               <img src="../../public/logo.svg" alt="icon" width={180} />
             </ListItem>
-            {sidebarRoute?.map((item, index) => {
-              return (
-                <ListItem
-                  sx={{ marginTop: index === 0 && 3 }}
-                  key={index}
-                  button
-                  component={Link}
-                  to={item?.path}
+            {sidebarRoute?.map((item, index) => (
+              <ListItem
+                sx={{ marginTop: index === 0 && 3 }}
+                key={index}
+                button
+                component={Link}
+                to={item?.path || item?.paths[0]}
+              >
+                <div
+                  style={
+                    isPathActive(item?.path, item?.paths)
+                      ? selectedObj
+                      : unSelectedObj
+                  }
                 >
-                  <div
-                    style={
-                      item?.path === location?.pathname
-                        ? selectedObj
-                        : unSelectedObj
-                    }
-                  >
-                    {item?.name}
-                  </div>
-                </ListItem>
-              );
-            })}
+                  {item?.name}
+                </div>
+              </ListItem>
+            ))}
           </List>
         </Drawer>
       ) : (
@@ -95,7 +99,7 @@ const Sidebar = ({ open, onClose, drawerWidth }) => {
             "& .MuiDrawer-paper": {
               width: drawerWidth,
               boxSizing: "border-box",
-              backgroundColor: theme.palette.primary.sidebar,
+              backgroundColor: theme.palette.primary.sidebarPrimary,
               color: theme.palette.primary.white,
             },
           }}
@@ -104,27 +108,25 @@ const Sidebar = ({ open, onClose, drawerWidth }) => {
             <ListItem component={Link} to="/">
               <img width={180} src="../../public/logo.svg" alt="icon" />
             </ListItem>
-            {sidebarRoute?.map((item, index) => {
-              return (
-                <ListItem
-                  sx={{ marginTop: index === 0 && 3 }}
-                  key={index}
-                  button
-                  component={Link}
-                  to={item?.path}
+            {sidebarRoute?.map((item, index) => (
+              <ListItem
+                sx={{ marginTop: index === 0 && 3 }}
+                key={index}
+                button
+                component={Link}
+                to={item?.path || item?.paths[0]}
+              >
+                <div
+                  style={
+                    isPathActive(item?.path, item?.paths)
+                      ? selectedObj
+                      : unSelectedObj
+                  }
                 >
-                  <div
-                    style={
-                      item?.path === location?.pathname
-                        ? selectedObj
-                        : unSelectedObj
-                    }
-                  >
-                    {item?.name}
-                  </div>
-                </ListItem>
-              );
-            })}
+                  {item?.name}
+                </div>
+              </ListItem>
+            ))}
           </List>
         </Drawer>
       )}

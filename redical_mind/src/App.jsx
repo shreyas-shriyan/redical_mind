@@ -17,6 +17,7 @@ import HeadCount from "./pages/HeadCount";
 import PlanningView from "./pages/PlanningView";
 import ViewFileName from "./pages/ViewFileName";
 import ProcessCell from "./pages/ProcessCell/index";
+import Admin from "./pages/AdminPages";
 
 function App() {
   return (
@@ -25,6 +26,15 @@ function App() {
         <Routes>
           <Route path="/" element={<PublicRoute restricted={false} />}>
             <Route path="/" element={<ExecutiveOverview />} />
+          </Route>
+          <Route
+            path="/qms/admin"
+            element={<PublicRoute restricted={false} />}
+          >
+            <Route
+              path="/qms/admin"
+              element={<Admin />}
+            />
           </Route>
           <Route
             path="/qms/executive-overview"

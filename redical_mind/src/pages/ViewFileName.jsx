@@ -10,6 +10,7 @@ import Summary from "./ProcessCell/summary";
 import Issue from "./ProcessCell/Issue";
 import SentimentScore from "./ProcessCell/SentimentScore";
 import data from "./ProcessCell/ravi_english_bad.json";
+import { useSearchParams } from "react-router-dom";
 
 const {
   withStyles,
@@ -47,6 +48,23 @@ const tabArray = [
 const ViewFileName = ({ classes }) => {
   const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState(tabArray[0]);
+  // const
+  const [searchParams] = useSearchParams();
+  console.log("searchParams", searchParams.get("tab"));
+
+  const tab = searchParams.get("tab");
+
+  useEffect(() => {
+    if (tab === "qaScore") {
+      setSelectedTab({
+        name: "QA Score Card",
+        value: "QAScoreCard",
+        Components: "",
+      });
+    }
+  }, [tab]);
+
+  // console.log("tab", tab);
 
   const [postData, setPostData] = useState({
     user: "Ravi",

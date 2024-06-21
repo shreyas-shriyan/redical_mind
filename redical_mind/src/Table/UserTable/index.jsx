@@ -62,7 +62,7 @@ const headData = [
   },
   {
     id: "audioFile",
-    label: "Call Duration (s)",
+    label: "Duration(sec)",
     minWidth: 100,
     width: 100,
     maxWidth: 100,
@@ -82,6 +82,14 @@ const headData = [
     minWidth: 200,
     width: 200,
     maxWidth: 200,
+    align: "center",
+  },
+  {
+    id: "qaScore",
+    label: "QA Score",
+    minWidth: 100,
+    width: 100,
+    maxWidth: 100,
     align: "center",
   },
 ];
@@ -176,6 +184,9 @@ const RiskEvaluationTable = ({ classes, status = false }) => {
 
   const handleClick = (fileName) => {
     navigate(`/qms/process-calls/view?filename=${fileName}`);
+  };
+  const handleQAScore = () => {
+    navigate(`/qms/process-calls/view?filename=&tab=qaScore`);
   };
 
   return (
@@ -326,7 +337,8 @@ const RiskEvaluationTable = ({ classes, status = false }) => {
                             column.id === "audioFile" ||
                             column.id === "fileName" ||
                             column.id === "playAudio" ||
-                            column.id === "date"
+                            column.id === "date" ||
+                            column.id === "qaScore"
                               ? ""
                               : column.label}
                           </StyledTableCell>
@@ -546,6 +558,30 @@ const RiskEvaluationTable = ({ classes, status = false }) => {
                                     {row?.Customer?.Subjectivity?.[0]?.toFixed(
                                       2
                                     )}
+                                  </StyledTableCell>
+                                );
+                              }
+
+                              if (column.id === "qaScore") {
+                                return (
+                                  <StyledTableCell
+                                    align="center"
+                                    key={column.id}
+                                  >
+                                    <Typography
+                                      onClick={() =>
+                                        handleQAScore(row?.QAScore)
+                                      }
+                                      sx={{
+                                        cursor: "pointer",
+                                        fontSize: "14px",
+                                        color:
+                                          theme.palette.primary
+                                            .sidebarSecondary,
+                                      }}
+                                    >
+                                      {row?.QAScore}
+                                    </Typography>
                                   </StyledTableCell>
                                 );
                               }

@@ -20,7 +20,7 @@ const CallDetailsCard = ({ data }) => {
         height: "80px",
         width: "100%",
         minWidth: "150px",
-        fontWeight: "600",
+        // fontWeight: "600",
         color: theme.palette.primary.sidebar,
       }}
     >

@@ -6,7 +6,8 @@ const theme = createTheme({
       main: "#191919",
       white: "#FFFFFF",
       sidebar: "#191919",
-      sidebarSecondary: "#002060",
+      sidebarPrimary:'#FAFAFA',
+      sidebarSecondary: "#5380F5",
     },
   },
   card: {

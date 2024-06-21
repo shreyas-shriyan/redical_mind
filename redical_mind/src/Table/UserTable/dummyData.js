@@ -28,6 +28,7 @@ const data = [
       FileName: ["Ravi call 2_1_7362834935053356829_1_80.wav"],
       total_Call_Duration: [331.408],
     },
+    QAScore: "80%",
   },
   {
     Customer: {
@@ -58,6 +59,7 @@ const data = [
       FileName: ["Nitin Call 2.wav"],
       total_Call_Duration: [246.42],
     },
+    QAScore: "72%",
   },
   {
     Customer: {
@@ -88,6 +90,7 @@ const data = [
       FileName: ["Amit call 3.wav"],
       total_Call_Duration: [145.08],
     },
+    QAScore: "60%",
   },
   {
     Customer: {
@@ -118,6 +121,7 @@ const data = [
       FileName: ["Pritam call 2.wav"],
       total_Call_Duration: [278.428],
     },
+    QAScore: "70%",
   },
   {
     Customer: {
@@ -148,6 +152,7 @@ const data = [
       FileName: ["Naman call 2.wav"],
       total_Call_Duration: [189.08],
     },
+    QAScore: "80%",
   },
   {
     Customer: {
@@ -178,6 +183,7 @@ const data = [
       FileName: ["Shreyas call 1.wav"],
       total_Call_Duration: [412.408],
     },
+    QAScore: "90%",
   },
   {
     Customer: {
@@ -208,6 +214,7 @@ const data = [
       FileName: ["Shreya call 2.wav"],
       total_Call_Duration: [300.208],
     },
+    QAScore: "60%",
   },
   {
     Customer: {
@@ -238,6 +245,7 @@ const data = [
       FileName: ["Priti Call 3.wav"],
       total_Call_Duration: [141.408],
     },
+    QAScore: "75%",
   },
   {
     Customer: {
@@ -268,6 +276,7 @@ const data = [
       FileName: ["Pawan call 2.wav"],
       total_Call_Duration: [316.408],
     },
+    QAScore: "70%",
   },
   {
     Customer: {
@@ -298,6 +307,7 @@ const data = [
       FileName: ["Aman call 2.wav"],
       total_Call_Duration: [142.568],
     },
+    QAScore: "90%",
   },
   {
     Customer: {
@@ -328,6 +338,7 @@ const data = [
       FileName: ["Aashi call 2.wav"],
       total_Call_Duration: [298.48],
     },
+    QAScore: "60%",
   },
 ];
 

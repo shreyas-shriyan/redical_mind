@@ -17,7 +17,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     backgroundColor: "white",
     color: "black",
     fontSize: 13,
-    padding: theme.spacing(1.5),
+    padding: theme.spacing(0.5),
     // fontWeight: theme.palette.font.fontWeight,
   },
 }));
